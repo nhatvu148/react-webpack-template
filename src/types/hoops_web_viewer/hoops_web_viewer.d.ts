@@ -4,7 +4,7 @@ declare namespace Communicator {
     Unknown = 0,
     v1_0 = 1,
     v2_0 = 2,
-    v2_1 = 3
+    v2_1 = 3,
   }
   enum BCFFileType {
     Unknown = 0,
@@ -14,7 +14,7 @@ declare namespace Communicator {
     Snapshot = 4,
     Viewpoint = 5,
     Schema = 6,
-    Project = 7
+    Project = 7,
   }
   /**
    * This class contains data corresponding to the BCF file format.
@@ -158,7 +158,11 @@ declare namespace Communicator {
     private _topic;
     private _comments;
     private _viewpoints;
-    constructor(filename: string, document: Document | null, bcfTopic: BCFTopic);
+    constructor(
+      filename: string,
+      document: Document | null,
+      bcfTopic: BCFTopic
+    );
     private _parseDocument;
     private _exportHeader;
     private _exportTopicData;
@@ -402,7 +406,10 @@ declare namespace Communicator {
      * @param filename
      * @param image
      */
-    static createFromImage(filename: string, image: HTMLImageElement): BCFSnapshot;
+    static createFromImage(
+      filename: string,
+      image: HTMLImageElement
+    ): BCFSnapshot;
     /**
      * Gets the filename.
      */
@@ -1145,12 +1152,12 @@ declare namespace Communicator.Internal {
   const enum ViewModeEyeBits {
     X = 2,
     Y = 4,
-    Z = 8
+    Z = 8,
   }
   const enum ViewModeUpBits {
     X = 16,
     Y = 32,
-    Z = 64
+    Z = 64,
   }
   const enum ViewMode {
     None = 0,
@@ -1159,7 +1166,7 @@ declare namespace Communicator.Internal {
     EyeY_UpX = 20,
     EyeY_UpZ = 68,
     EyeZ_UpX = 24,
-    EyeZ_UpY = 40
+    EyeZ_UpY = 40,
   }
   const enum AxisConstants {
     StemHeight = 2,
@@ -1170,7 +1177,7 @@ declare namespace Communicator.Internal {
     ConeBaseRadius = 0.4,
     LetterOffsetPos = 0.6,
     LetterWidth = 0.3,
-    LetterHeight = 0.5
+    LetterHeight = 0.5,
   }
 }
 declare namespace Communicator {
@@ -1277,7 +1284,9 @@ declare namespace Communicator {
      * @param selectionItem selection item to check.
      * @returns Axis if selected, null otherwise.
      */
-    getSelectionAxis(selectionItem: Selection.SelectionItem | null): Axis | null;
+    getSelectionAxis(
+      selectionItem: Selection.SelectionItem | null
+    ): Axis | null;
     /**
      * Called when the axis triad is clicked. Realigns the view along the axis selected by `selection`
      * or does nothing if no axis is selected.
@@ -1472,7 +1481,10 @@ declare namespace Communicator.Internal {
       newRoots: NodeId[],
       attachType: AttachType
     ): Promise<void>;
-    promiseTrigger(name: "_resetAssemblyTreeBegin", delegate: null): Promise<void>;
+    promiseTrigger(
+      name: "_resetAssemblyTreeBegin",
+      delegate: null
+    ): Promise<void>;
     promiseTrigger(name: "_resetDrawing", delegate: null): Promise<void>;
     promiseTrigger(name: "_sessionStarted", delegate: null): Promise<void>;
     promiseTrigger(
@@ -1532,7 +1544,11 @@ declare namespace Communicator.Internal {
       effectiveModelKey: SC.ModelKey,
       originalModelKey: SC.ModelKey
     ): void;
-    trigger(name: "_fetchBegin", url: string, attachScope: SC.AttachScope): void;
+    trigger(
+      name: "_fetchBegin",
+      url: string,
+      attachScope: SC.AttachScope
+    ): void;
     trigger(name: "_fetchEnd", url: string, attachScope: SC.AttachScope): void;
     trigger(name: "_resetOpacity"): void;
     trigger(name: "_rootModelKey", modelKey: SC.ModelKey): void;
@@ -1544,11 +1560,23 @@ declare namespace Communicator.Internal {
     trigger(name: "bcfLoaded", id: number, filename: BCFName): void;
     trigger(name: "bcfRemoved", id: number): void;
     trigger(name: "beginInteraction"): void;
-    trigger(name: "cadViewCreated", cadViewId: CadViewId, cadViewName: string): void;
+    trigger(
+      name: "cadViewCreated",
+      cadViewId: CadViewId,
+      cadViewName: string
+    ): void;
     trigger(name: "camera", camera: Camera): void;
-    trigger(name: "cappingIdle", isIdle: boolean, cappedInstanceCount: number): void;
+    trigger(
+      name: "cappingIdle",
+      isIdle: boolean,
+      cappedInstanceCount: number
+    ): void;
     trigger(name: "configurationActivated", id: NodeId): void;
-    trigger(name: "contextMenu", position: Point2, modifiers: KeyModifiers): void;
+    trigger(
+      name: "contextMenu",
+      position: Point2,
+      modifiers: KeyModifiers
+    ): void;
     trigger(
       name: "cuttingPlaneDragStart",
       cuttingSection: CuttingSection,
@@ -1626,7 +1654,10 @@ declare namespace Communicator.Internal {
     trigger(name: "lineCreated", line: Markup.Line.LineMarkup): void;
     trigger(name: "lineDeleted", line: Markup.Line.LineMarkup): void;
     trigger(name: "lineLoaded", line: Markup.Line.LineMarkup): void;
-    trigger(name: "measurement", measurement: Markup.Measure.MeasureMarkup): void;
+    trigger(
+      name: "measurement",
+      measurement: Markup.Measure.MeasureMarkup
+    ): void;
     trigger(name: "measurementBegin"): void;
     trigger(
       name: "measurementCreated",
@@ -1654,7 +1685,11 @@ declare namespace Communicator.Internal {
     ): void;
     trigger(name: "missingModel", modelPath: string): void;
     trigger(name: "modelLoadBegin"): void;
-    trigger(name: "modelLoaded", loadedRootIds: NodeId[], source: NodeSource): void;
+    trigger(
+      name: "modelLoaded",
+      loadedRootIds: NodeId[],
+      source: NodeSource
+    ): void;
     trigger(
       name: "modelLoadFailure",
       modelName: ScModelName,
@@ -1669,15 +1704,28 @@ declare namespace Communicator.Internal {
     trigger(name: "modelStructureLoadBegin"): void;
     trigger(name: "modelStructureLoadEnd"): void;
     trigger(name: "modelStructureParseBegin"): void;
-    trigger(name: "modelSwitched", clearOnly: boolean, newRoots: NodeId[]): void;
+    trigger(
+      name: "modelSwitched",
+      clearOnly: boolean,
+      newRoots: NodeId[]
+    ): void;
     trigger(name: "modelSwitchStart", clearOnly: boolean): void;
     trigger(name: "noteTextCreated", noteText: Markup.Note.NoteText): void;
     trigger(name: "noteTextHidden", noteText: Markup.Note.NoteText): void;
     trigger(name: "noteTextShown", noteText: Markup.Note.NoteText): void;
     trigger(name: "overlayViewportSet", overlayIndex: OverlayIndex): void;
-    trigger(name: "redlineCreated", redlineMarkup: Markup.Redline.RedlineItem): void;
-    trigger(name: "redlineDeleted", redlineMarkup: Markup.Redline.RedlineItem): void;
-    trigger(name: "redlineUpdated", redlineMarkup: Markup.Redline.RedlineItem): void;
+    trigger(
+      name: "redlineCreated",
+      redlineMarkup: Markup.Redline.RedlineItem
+    ): void;
+    trigger(
+      name: "redlineDeleted",
+      redlineMarkup: Markup.Redline.RedlineItem
+    ): void;
+    trigger(
+      name: "redlineUpdated",
+      redlineMarkup: Markup.Redline.RedlineItem
+    ): void;
     trigger(name: "removeCuttingSection"): void;
     trigger(name: "sceneReady"): void;
     trigger(
@@ -1756,7 +1804,10 @@ declare namespace Communicator {
     /** @hidden */
     _sessionStarted?: () => Promise<void>;
     /** @hidden */
-    _subtreeLoaded?: (subtreeRootIds: NodeId[], source: NodeSource) => Promise<void>;
+    _subtreeLoaded?: (
+      subtreeRootIds: NodeId[],
+      source: NodeSource
+    ) => Promise<void>;
     /** @hidden */
     _announceModel?: (
       attachScope: SC.AttachScope,
@@ -1895,7 +1946,10 @@ declare namespace Communicator {
      * @param cuttingSection The cutting section containing the cutting plane.
      * @param planeIndex The index of the cutting plane in the cutting section.
      */
-    cuttingPlaneDrag?: (cuttingSection: CuttingSection, planeIndex: number) => void;
+    cuttingPlaneDrag?: (
+      cuttingSection: CuttingSection,
+      planeIndex: number
+    ) => void;
     /**
      * Triggered when a cutting plane drag event stops.
      *
@@ -2130,7 +2184,11 @@ declare namespace Communicator {
      * @param reason The reason the model failed to load.
      * @param error The error object thrown when the load failed, if available.
      */
-    modelLoadFailure?: (modelName: ScModelName, reason: string, error?: any) => void;
+    modelLoadFailure?: (
+      modelName: ScModelName,
+      reason: string,
+      error?: any
+    ) => void;
     /**
      * Triggered when a model header has been parsed.
      * @param filename The name of the original model file.
@@ -2384,7 +2442,10 @@ declare namespace Communicator {
      * @param shownBodyIds IDs of `Body` nodes that were shown.
      * @param hiddenBodyIds IDs of `Body` nodes that were hidden.
      */
-    visibilityChanged?: (shownBodyIds: BodyId[], hiddenBodyIds: BodyId[]) => void;
+    visibilityChanged?: (
+      shownBodyIds: BodyId[],
+      hiddenBodyIds: BodyId[]
+    ) => void;
     /**
      * @deprecated Use [[incrementalSelectionBatchBegin]] instead.
      *
@@ -2487,16 +2548,16 @@ declare namespace Communicator {
     LoadModel = 0,
     CreateNode = 1,
     CreateInstance = 2,
-    CreatePmi = 3
+    CreatePmi = 3,
   }
   enum ScreenConfiguration {
     Desktop = 0,
-    Mobile = 1
+    Mobile = 1,
   }
   enum ElementType {
     Faces = 0,
     Lines = 1,
-    Points = 2
+    Points = 2,
   }
   /**
    * Enumerated values used for setting camera projection.
@@ -2505,7 +2566,7 @@ declare namespace Communicator {
     /** Orthographic projection */
     Orthographic = 0,
     /** Perspective projection */
-    Perspective = 1
+    Perspective = 1,
   }
   /**
    * Enumerated values used when setting pre-defined view orientations.
@@ -2572,7 +2633,7 @@ declare namespace Communicator {
     BackLeft = 51,
     BackRight = 52,
     BackBottom = 53,
-    BackTop = 54
+    BackTop = 54,
   }
   /** Enumerated values used when referring to an axis */
   enum Axis {
@@ -2581,7 +2642,7 @@ declare namespace Communicator {
     /** The Y axis */
     Y = 1,
     /** The Z axis */
-    Z = 2
+    Z = 2,
   }
   /** Enumerated values used when referring to the buttons on a mouse */
   enum Button {
@@ -2592,26 +2653,26 @@ declare namespace Communicator {
     /** Middle mouse button */
     Middle = 1,
     /** Right mouse button */
-    Right = 2
+    Right = 2,
   }
   /** Bitmask for buttons being pressed when referring to the buttons on a mouse */
   enum Buttons {
     None = 0,
     Left = 1,
     Right = 2,
-    Middle = 4
+    Middle = 4,
   }
   /** Enumerated values for types of handles for [[HandleOperator]]. */
   enum HandleType {
     Axis = 0,
     Plane = 1,
     ViewPlane = 2,
-    Rotate = 3
+    Rotate = 3,
   }
   /** Enumerated values for types of handle events for [[HandleOperator]]. */
   enum HandleEventType {
     Translate = 0,
-    Rotate = 1
+    Rotate = 1,
   }
   /** Enumerates IDs for operators. For more information see reference for [[Communicator.Operator]]. */
   enum OperatorId {
@@ -2644,7 +2705,7 @@ declare namespace Communicator {
     Handle = 25,
     NavCube = 26,
     AxisTriad = 27,
-    Floorplan = 28
+    Floorplan = 28,
   }
   /** Enumerates IDs for built-in operators */
   type BuiltInOperatorId =
@@ -2687,7 +2748,7 @@ declare namespace Communicator {
     TouchEnd = 6,
     KeyDown = 7,
     KeyUp = 8,
-    ViewOrientationChange = 9
+    ViewOrientationChange = 9,
   }
   /** Enumerates Modifier Keys. Note this enumeration may not correspond with JavaScript key codes for the corresponding keys. */
   enum KeyModifiers {
@@ -2700,7 +2761,7 @@ declare namespace Communicator {
     /** The control key */
     Control = 8,
     /** The command key */
-    Command = 16
+    Command = 16,
   }
   /** Enumerates types of mouse input */
   enum MouseInputType {
@@ -2711,7 +2772,7 @@ declare namespace Communicator {
     /** Mouse was moved */
     Move = 2,
     /** The mouse wheel was moved */
-    Wheel = 3
+    Wheel = 3,
   }
   /** Enumerates types of touch input */
   enum TouchInputType {
@@ -2720,14 +2781,14 @@ declare namespace Communicator {
     /** A touch has moved */
     Move = 1,
     /** A touch has ended */
-    End = 2
+    End = 2,
   }
   /** Enumerates types of keyboard input */
   enum KeyInputType {
     /** A key has been pressed */
     Down = 0,
     /** A key has been released */
-    Up = 1
+    Up = 1,
   }
   /** Enumerates directions for the walk operator */
   enum WalkDirection {
@@ -2740,7 +2801,7 @@ declare namespace Communicator {
     RotateRight = 6,
     RotateLeft = 7,
     TiltUp = 8,
-    TiltDown = 9
+    TiltDown = 9,
   }
   /** Enumerates JavaScript Key Codes. We recommend using [this tool](https://keycode.info/) if you are unsure which keycode you are trying to capture. */
   enum KeyCode {
@@ -2810,7 +2871,7 @@ declare namespace Communicator {
     NumPad_6 = 102,
     NumPad_7 = 103,
     NumPad_8 = 104,
-    NumPad_9 = 105
+    NumPad_9 = 105,
   }
   /** Bitmask for allowed selection types */
   enum SelectionMask {
@@ -2818,7 +2879,7 @@ declare namespace Communicator {
     Face = 1,
     Line = 2,
     Point = 4,
-    All = 7
+    All = 7,
   }
   /** Enumerates a type of selection */
   enum SelectionType {
@@ -2831,7 +2892,7 @@ declare namespace Communicator {
     /** A point element was selected */
     Point = 3,
     /** A Part was selected */
-    Part = 4
+    Part = 4,
   }
   /**
    * Enumerates the modes to be used when performing selections.
@@ -2848,7 +2909,7 @@ declare namespace Communicator {
      * If the selection item is in the selection set, removes it.
      * If it is not in the selection set, adds it.
      */
-    Toggle = 2
+    Toggle = 2,
   }
   /**
    * Enumerates the visual indications for selected objects
@@ -2859,7 +2920,7 @@ declare namespace Communicator {
     /** An outline is rendered around selected nodes */
     OutlineOnly = 1,
     /** Selected Nodes are highlighted and an outline is rendered. */
-    HighlightAndOutline = 2
+    HighlightAndOutline = 2,
   }
   /** Enumerates the type of message passed via an info callback */
   enum InfoType {
@@ -2868,7 +2929,7 @@ declare namespace Communicator {
     /** Warning message which does not trigger an error but may affect program execution */
     Warning = 1,
     /** Error message indicating a problem has occurred */
-    Error = 2
+    Error = 2,
   }
   /**
    * Enumerates the mode the viewer will use when streaming data to the client.
@@ -2895,7 +2956,7 @@ declare namespace Communicator {
     /**
      * The default streaming mode.
      */
-    Default = 1
+    Default = 1,
   }
   /**
    * Enumerates the mode that is used for rendering
@@ -2907,7 +2968,7 @@ declare namespace Communicator {
      */
     Client = 0,
     /** Rendering is performed on the server */
-    Server = 1
+    Server = 1,
   }
   /** Enumerates drawing modes available in the viewer. More information can be found [here](https://docs.techsoft3d.com/communicator/latest/build/prog_guide/viewing/scene_attributes/draw-modes.html). */
   enum DrawMode {
@@ -2920,28 +2981,28 @@ declare namespace Communicator {
     /** Silhouette edges and obscured lines are rendered */
     HiddenLine = 3,
     /** Selected items are drawn on top, and unselected items are drawn transparent */
-    XRay = 4
+    XRay = 4,
   }
   /** Enumerates ways of displaying transparent geometry */
   enum TransparencyMode {
     /** Transparent objects are blended together without z-sorting. */
     Unsorted = 0,
     /** Only the front-most transparent object is visible at a given pixel. */
-    SingleLayer = 1
+    SingleLayer = 1,
   }
   /** Enumerates ways of displaying transparent (unselected) geometry in the x-ray draw mode. */
   enum XRayTransparencyMode {
     /** Transparent objects are blended together without z-sorting. */
     Unsorted = 0,
     /** Only the front-most transparent object is visible at a given pixel. */
-    SingleLayer = 1
+    SingleLayer = 1,
   }
   /** Enumerates anti-aliasing modes available in the viewer */
   enum AntiAliasingMode {
     /** SMAA anti-aliasing */
     SMAA = 0,
     /** No anti-aliasing */
-    None = 1
+    None = 1,
   }
   /** Enumerates instance modifier modes. More information can be found [here](https://docs.techsoft3d.com/communicator/latest/build/prog_guide/viewing/model_attributes/instance-modifiers.html). */
   enum InstanceModifier {
@@ -3011,7 +3072,7 @@ declare namespace Communicator {
     /** @deprecated Use [[DoNotLight]] instead. */
     IgnoreLighting = 5,
     /** @deprecated Use [[DoNotOutlineHighlight]] instead. */
-    IgnoreOutlineHighlight = 6
+    IgnoreOutlineHighlight = 6,
   }
   /** Flags used when creating a mesh instance */
   enum MeshInstanceCreationFlags {
@@ -3072,7 +3133,7 @@ declare namespace Communicator {
      * If the aspect ratio of the screen is not 1:1, the instance
      * will stretch in the direction of the longer side.
      */
-    ScreenSpaceStretched = 16384
+    ScreenSpaceStretched = 16384,
   }
   enum BoundingPreviewMode {
     /** No bounding previews will be rendered */
@@ -3084,7 +3145,7 @@ declare namespace Communicator {
     /** Bounding previews will be rendered for items that have been ejected. This is only applicable if the memoryLimit option is set at viewer creation. */
     Ejected = 4,
     /** Combination of Model, Instance, and Ejected options */
-    All = 7
+    All = 7,
   }
   /** Enumerates Camera Orbit Fallback Modes */
   enum OrbitFallbackMode {
@@ -3093,12 +3154,12 @@ declare namespace Communicator {
     /** Orbit around the center of the model bounding box. */
     ModelCenter = 1,
     /** Orbit around a specified point. Defaults to the origin if there is no specified point. */
-    OrbitTarget = 2
+    OrbitTarget = 2,
   }
   /** Enumerates Walk Modes */
   enum WalkMode {
     Mouse = 0,
-    Keyboard = 1
+    Keyboard = 1,
   }
   /** Enumerates of the types returned by Model.getNodeType() */
   enum NodeType {
@@ -3137,7 +3198,7 @@ declare namespace Communicator {
     /** This node is a Drawing sheet. */
     DrawingSheet = 13,
     /** If for any reason a node doesn't correspond to any of those types, unknown is returned. */
-    Unknown = 14
+    Unknown = 14,
   }
   /** PMI type */
   enum PmiType {
@@ -3174,7 +3235,7 @@ declare namespace Communicator {
     /** Other */
     Other = 15,
     /** Geometrical tolerance */
-    GeometricalTolerance = 16
+    GeometricalTolerance = 16,
   }
   /** @deprecated Use [[PmiType]] instead. */
   type PMIType = PmiType;
@@ -3241,7 +3302,7 @@ declare namespace Communicator {
     /** Geometric reference, other subtype */
     OtherGeometricReference = 4,
     /** Region symbol, other subtype */
-    OtherRegion = 5
+    OtherRegion = 5,
   }
   /** @deprecated Use [[PmiSubType]] instead. */
   type PMISubType = PmiSubType;
@@ -3279,7 +3340,7 @@ declare namespace Communicator {
     /** Main entry to non-wire topology */
     BrepData = 14,
     /** Main entry to wire topology */
-    WireBody = 17
+    WireBody = 17,
   }
   /** @deprecated Use [[PmiTopoRef]] instead. */
   type PMITopoRef = PmiTopoRef;
@@ -3294,7 +3355,7 @@ declare namespace Communicator {
     /** Faces are wound in a clockwise manner. */
     Clockwise = 1,
     /** Faces are wound in a counter-clockwise manner. */
-    CounterClockwise = 2
+    CounterClockwise = 2,
   }
   enum OverlayAnchor {
     UpperLeftCorner = 0,
@@ -3305,7 +3366,7 @@ declare namespace Communicator {
     LeftCenter = 5,
     RightCenter = 6,
     BottomCenter = 7,
-    Center = 8
+    Center = 8,
   }
   /**
    * Enumerates the unit types that an overlay viewport value may be.
@@ -3328,7 +3389,7 @@ declare namespace Communicator {
      * calculated height value will be equal to the calculated width value should the canvas resize.
      * In this case the value should be specified in a range of 0.0 to 1.0.
      */
-    ProportionOfOtherDimension = 2
+    ProportionOfOtherDimension = 2,
   }
   /** Specifies how point size is interpreted. */
   enum PointSizeUnit {
@@ -3350,7 +3411,7 @@ declare namespace Communicator {
      * of the scene's bounding box.
      * Points will scale according to distance from the camera under perspective projection.
      */
-    ProportionOfBoundingDiagonal = 5
+    ProportionOfBoundingDiagonal = 5,
   }
   /** Specifies the appearance of points. */
   enum PointShape {
@@ -3365,7 +3426,7 @@ declare namespace Communicator {
      * Points will be drawn as filled circles lit as if they were spheres
      * instead of being filled with a solid color.
      */
-    Sphere = 2
+    Sphere = 2,
   }
   /** Object which maps an Id to a string value */
   interface IdStringMap {
@@ -3408,14 +3469,14 @@ declare namespace Communicator {
     /** All children are visible. */
     Shown = 1,
     /** Not all children have the same visibility state. */
-    Mixed = 2
+    Mixed = 2,
   }
   /** The space in which a culling vector is defined. */
   enum CullingVectorSpace {
     /** The object space of the item to which the culling vector is attached. The culling vector is affected by the item's modelling matrices. */
     Object = 0,
     /** World space. The culling vector is not affected by modelling matrices. */
-    World = 1
+    World = 1,
   }
   enum BuiltinOverlayIndex {
     /** @hidden */
@@ -3425,7 +3486,7 @@ declare namespace Communicator {
     NavCube = 10,
     Floorplan = 11,
     /** @hidden */
-    TestFramework = 12
+    TestFramework = 12,
   }
   class FaceFaceDistanceItem {
     pos1: Point3;
@@ -3530,14 +3591,14 @@ declare namespace Communicator {
      * calculation for each vertex in the line, which makes it less
      * performant than other units.
      */
-    ProportionOfScreenHeight = 3
+    ProportionOfScreenHeight = 3,
   }
   /** Specifies a category of nodes in x-ray mode. See [[DrawMode.XRay]]. */
   enum XRayGroup {
     /** Selected nodes. */
     Selected = 0,
     /** Unselected nodes. */
-    Unselected = 1
+    Unselected = 1,
   }
   /**
    * Specifies the units in which the interval between samples in a blurring
@@ -3549,7 +3610,7 @@ declare namespace Communicator {
     /** A proportion of the width of the source image, where `1` means the full width. */
     ProportionOfWidth = 1,
     /** A Proportion of the height of the source image, where `1` means the full height. */
-    ProportionOfHeight = 2
+    ProportionOfHeight = 2,
   }
   /**
    * Describes a single layer in the bloom effect.
@@ -3597,7 +3658,7 @@ declare namespace Communicator {
     Float = 2,
     Time = 3,
     String = 4,
-    Ignored = 5
+    Ignored = 5,
   }
   interface Attribute {
     getType(): AttributeType;
@@ -3754,7 +3815,7 @@ declare namespace Communicator {
     /** Revit modeller. */
     Revit = 50,
     /** FBX modeller. */
-    Fbx = 51
+    Fbx = 51,
   }
   /**
    * Defines the invisible ground plane onto which simple shadows
@@ -3790,7 +3851,7 @@ declare namespace Communicator {
      * If this unit is used, distances will be multiplied by the distance
      * from the ground plane to the furthest point on the scene bounding.
      */
-    ProportionOfBoundingHeight = 1
+    ProportionOfBoundingHeight = 1,
   }
   /**
    * Possible modes to use when performing operations which allow for customization of the way the
@@ -3815,7 +3876,7 @@ declare namespace Communicator {
      * conflicting values, this method may produce undesirable results, and the default method
      * should be used instead.
      */
-    PerNode = 1
+    PerNode = 1,
   }
   /** Used to allow different orientations of the floorplan display. */
   enum FloorplanOrientation {
@@ -3823,14 +3884,14 @@ declare namespace Communicator {
     NorthUp = 0,
     /** For Avatar-Up, the avatar rotation is fixed such that it always points up, and the floorplan will
      *  rotate around it. */
-    AvatarUp = 1
+    AvatarUp = 1,
   }
 }
 /** @hidden */
 declare namespace Communicator.Internal {
   enum AttachType {
     Direct = 0,
-    Indirect = 1
+    Indirect = 1,
   }
 }
 declare namespace Communicator.Internal {
@@ -3842,7 +3903,7 @@ declare namespace Communicator.Internal {
     Width = 8,
     Height = 16,
     Projection = 32,
-    NearLimit = 64
+    NearLimit = 64,
   }
 }
 declare namespace Communicator {
@@ -4026,7 +4087,7 @@ declare namespace Communicator {
     Z = 2,
     Face = 3,
     /** @hidden */
-    CadView = 4
+    CadView = 4,
   }
   /**
    * Main interface into the cutting functionality of the viewer. The object manages a number of individual CuttingSections which can be activated individually.
@@ -4161,7 +4222,9 @@ declare namespace Communicator {
      * The default value is true.
      * @param cappingGeometryVisibility
      */
-    setCappingGeometryVisibility(cappingGeometryVisibility: boolean): Promise<void>;
+    setCappingGeometryVisibility(
+      cappingGeometryVisibility: boolean
+    ): Promise<void>;
     /**
      * Gets whether capping geometry will show
      * @returns boolean value indicating whether capping geometry will show
@@ -4487,7 +4550,7 @@ declare namespace Communicator {
     /** Activate the floorplan when a BIM model is loaded. */
     Bim = 1,
     /** Activate the floorplan if a BIM model is loaded and a walk operator is active. */
-    BimWalk = 2
+    BimWalk = 2,
   }
   /**
    * Main interface into the 2D floorplan functionality for the viewer.
@@ -4884,7 +4947,10 @@ declare namespace Communicator.Internal {
     private _callbackManager;
     private _contextEventChecker;
     private _operatorManager;
-    constructor(callbackManager: CallbackManager, operatorManager: OperatorManager);
+    constructor(
+      callbackManager: CallbackManager,
+      operatorManager: OperatorManager
+    );
     injectMouseDownEvent(
       x: number,
       y: number,
@@ -5067,7 +5133,10 @@ declare namespace Communicator.Internal {
     private readonly _elementOffset;
     private _pointerUp;
     private _buttons;
-    constructor(eventDispatcher: EventDispatcher, timeoutMonitor: TimeoutMonitor);
+    constructor(
+      eventDispatcher: EventDispatcher,
+      timeoutMonitor: TimeoutMonitor
+    );
     private _tryLockEventDispatcher;
     private _unlockEventDispatcher;
     shutdown(): void;
@@ -5125,7 +5194,7 @@ declare namespace Communicator {
      * rather than a point inside the scene. Light will hit every point
      * in the scene from that direction.
      */
-    Directional = 0
+    Directional = 0,
   }
   /**
    * Specifies the space in which a light's position is defined. See [[Light]].
@@ -5137,7 +5206,7 @@ declare namespace Communicator {
      * Camera space. Specifying light positions in this space will cause
      * them to follow the camera.
      */
-    Camera = 1
+    Camera = 1,
   }
   /**
    * Contains properties of a light. More information can be found [here](https://docs.techsoft3d.com/communicator/latest/build/prog_guide/viewing/scene_attributes/lights.html).
@@ -5161,7 +5230,12 @@ declare namespace Communicator {
      * @param position The light's position. See [[position]].
      * @param color The light's color. See [[color]].
      */
-    constructor(type: LightType, space: LightSpace, position: Point3, color: Color);
+    constructor(
+      type: LightType,
+      space: LightSpace,
+      position: Point3,
+      color: Color
+    );
   }
 }
 declare namespace Communicator {
@@ -6181,7 +6255,10 @@ declare namespace Communicator {
      * @param highlighted value indicating whether the supplied nodes should be highlighted.
      * @returns Promise that resolves when this operation has completed.
      */
-    setNodesHighlighted(partIds: PartId[], highlighted: boolean): DeprecatedPromise;
+    setNodesHighlighted(
+      partIds: PartId[],
+      highlighted: boolean
+    ): DeprecatedPromise;
     /**
      * Returns whether the supplied nodes have been highlighted with [[setNodesHighlighted]].
      * @param nodeIds the list of nodes to be queried
@@ -6243,7 +6320,10 @@ declare namespace Communicator {
      * Takes a boolean value and either enables the set PMI override color or resets all PMI colors to their default
      * @returns Promise that resolves when this operation has completed.
      */
-    setPmiColorOverride(enableOverride: boolean, rootId?: NodeId): DeprecatedPromise;
+    setPmiColorOverride(
+      enableOverride: boolean,
+      rootId?: NodeId
+    ): DeprecatedPromise;
     /** @deprecated Use [[setPmiColorOverride]] instead. */
     setPMIColorOverride(enableOverride: boolean): DeprecatedPromise;
     /**
@@ -6393,7 +6473,10 @@ declare namespace Communicator {
      * @param nodeId the ID of the node containing the point element
      * @param pointIndex the index of the point within the node
      */
-    getNodePointHighlighted(nodeId: NodeId, pointIndex: number): Promise<boolean>;
+    getNodePointHighlighted(
+      nodeId: NodeId,
+      pointIndex: number
+    ): Promise<boolean>;
     /**
      * Resets color for all nodes in the model.
      * @returns Promise that resolves when this operation has completed.
@@ -6406,7 +6489,10 @@ declare namespace Communicator {
      */
     setNodesOpacity(nodeIds: NodeId[], opacity: number): void;
     /** @deprecated use [[setNodesOpacity]] instead. */
-    setNodesTransparency(nodeIds: NodeId[], transparency: number): DeprecatedPromise;
+    setNodesTransparency(
+      nodeIds: NodeId[],
+      transparency: number
+    ): DeprecatedPromise;
     /**
      * Returns whether nodes with the given NodeIds have an opacity value that is not fully opaque.
      * @param nodeIds IDs of nodes to query.
@@ -6917,7 +7003,10 @@ declare namespace Communicator {
      * @param onlyTreeNodes if true return only nodes present in model Tree
      * @returns An array of nodes Id of nodes with the given layerId or null if no layers are found.
      */
-    getNodesFromLayer(layerId: LayerId, onlyTreeNodes?: boolean): NodeId[] | null;
+    getNodesFromLayer(
+      layerId: LayerId,
+      onlyTreeNodes?: boolean
+    ): NodeId[] | null;
     /**
      * Returns IDs of nodes in given layers.
      * @param layersId Array of layers Id to get nodes from.
@@ -7266,7 +7355,10 @@ declare namespace Communicator {
       additionalMatrix?: Matrix | null
     ): Promise<NodeId[]>;
     /** @deprecated Use [[loadSubtreeFromXmlFile]] instead. */
-    loadSubtreeFromUrl(nodeId: NodeId, xmlFilename: XmlFilename): Promise<NodeId[]>;
+    loadSubtreeFromUrl(
+      nodeId: NodeId,
+      xmlFilename: XmlFilename
+    ): Promise<NodeId[]>;
     /** @deprecated Use [[loadSubtreeFromXmlBuffer]] instead. */
     loadSubtreeFromXML(nodeId: NodeId, xmlData: string): Promise<NodeId[]>;
     /**
@@ -7389,7 +7481,11 @@ declare namespace Communicator {
      * @param min the depth value at the near plane
      * @param max the depth value at the far plane
      */
-    setDepthRange(nodeIds: NodeId[], min: number, max: number): DeprecatedPromise;
+    setDepthRange(
+      nodeIds: NodeId[],
+      min: number,
+      max: number
+    ): DeprecatedPromise;
     private _setDepthRange;
     /**
      * Unsets the depth range set by [[setDepthRange]].
@@ -7526,7 +7622,9 @@ declare namespace Communicator {
      * @param nodeIds The nodes to query culling vectors from.
      * @returns A promise of culling vectors.
      */
-    getNodesCullingVectors(nodeIds: NodeId[]): Promise<(CullingVector | null)[]>;
+    getNodesCullingVectors(
+      nodeIds: NodeId[]
+    ): Promise<(CullingVector | null)[]>;
     /**
      * Retrieves the node ID offset for a given node.
      * @param nodeId The node to obtain the node ID offset from.
@@ -7836,16 +7934,24 @@ declare namespace Communicator {
     getOperator(id: OperatorId.Pan): Operator.CameraPanOperator;
     getOperator(id: OperatorId.Zoom): Operator.CameraZoomOperator;
     getOperator(id: OperatorId.Walk): Operator.CameraKeyboardWalkOperator;
-    getOperator(id: OperatorId.KeyboardWalk): Operator.CameraKeyboardWalkOperator;
+    getOperator(
+      id: OperatorId.KeyboardWalk
+    ): Operator.CameraKeyboardWalkOperator;
     getOperator(id: OperatorId.WalkMode): Operator.CameraWalkModeOperator;
     getOperator(id: OperatorId.Turntable): Operator.CameraTurntableOperator;
     getOperator(id: OperatorId.Select): Operator.SelectionOperator;
     getOperator(id: OperatorId.AreaSelect): Operator.AreaSelectionOperator;
-    getOperator(id: OperatorId.RayDrillSelect): Operator.RayDrillSelectionOperator;
+    getOperator(
+      id: OperatorId.RayDrillSelect
+    ): Operator.RayDrillSelectionOperator;
     getOperator(id: OperatorId.RedlineCircle): Operator.RedlineCircleOperator;
     getOperator(id: OperatorId.RedlineText): Operator.RedlineTextOperator;
-    getOperator(id: OperatorId.RedlineRectangle): Operator.RedlineRectangleOperator;
-    getOperator(id: OperatorId.RedlinePolyline): Operator.RedlinePolylineOperator;
+    getOperator(
+      id: OperatorId.RedlineRectangle
+    ): Operator.RedlineRectangleOperator;
+    getOperator(
+      id: OperatorId.RedlinePolyline
+    ): Operator.RedlinePolylineOperator;
     getOperator(
       id: OperatorId.MeasureEdgeLength
     ): Operator.MeasureEdgeLengthOperator;
@@ -8018,7 +8124,7 @@ declare namespace Communicator {
     None = 0,
     Floor = 1,
     Wall = 2,
-    Door = 4
+    Door = 4,
   }
   /**
    * Configuration for all pick functions in the View class.
@@ -8150,11 +8256,11 @@ declare namespace SC {
 declare namespace Communicator.Internal {
   const enum KeyInfoBy {
     Attachment = 0,
-    Model = 1
+    Model = 1,
   }
   const enum KeyInfoReturn {
     AllKeys = 0,
-    KeyCountOnly = 1
+    KeyCountOnly = 1,
   }
   interface CuttingSectionLimits {
     maxCuttingSections: number;
@@ -8176,7 +8282,7 @@ declare namespace Communicator.Internal {
   }
   const enum RequestBatchType {
     MetaData = 0,
-    Count = 1
+    Count = 1,
   }
   class ScEngine {
     private readonly _callbackManager;
@@ -8226,7 +8332,10 @@ declare namespace Communicator.Internal {
     sleep(duration: Milliseconds): Promise<void>;
     getScsInfo(): ScsUri | ScsBuffer | null;
     private _applyOptions;
-    start(canvasContainer: HTMLDivElement, options: ScEngine.InitOptions): boolean;
+    start(
+      canvasContainer: HTMLDivElement,
+      options: ScEngine.InitOptions
+    ): boolean;
     setPickTolerance(tolerance: number): void;
     getPickTolerance(): number;
     private _onEngineReady;
@@ -8257,7 +8366,9 @@ declare namespace Communicator.Internal {
     setCappingDelay(delayInMilliseconds: number): void;
     enableCappingIdleCallback(enable: boolean): Promise<boolean>;
     delayCapping(): void;
-    setCappingGeometryVisibility(cappingGeometryVisibility: boolean): Promise<void>;
+    setCappingGeometryVisibility(
+      cappingGeometryVisibility: boolean
+    ): Promise<void>;
     private _regenerateCapping;
     getCappingGeometryVisibility(): boolean;
     setDiffuseColor(materialIds: SC.MaterialIds, color: SC.Rgba): Promise<void>;
@@ -8385,7 +8496,10 @@ declare namespace Communicator.Internal {
       elementType: ElementType,
       elementIndex: number
     ): Promise<boolean[]>;
-    setNodeHighlightColor(fillColor: Color | null, outlineColor: Color | null): void;
+    setNodeHighlightColor(
+      fillColor: Color | null,
+      outlineColor: Color | null
+    ): void;
     setElementHighlightColor(
       fillColor: Color | null,
       outlineColor: Color | null
@@ -8494,7 +8608,9 @@ declare namespace Communicator.Internal {
     ): Promise<SC.ImageId>;
     destroyImages(imageIds: SC.ImageIds): Promise<void>;
     _toTextureTiling(value: TextureTiling | undefined): SC.TextureTiling;
-    _toTextureInterpolation(value: boolean | undefined): SC.TextureInterpolation;
+    _toTextureInterpolation(
+      value: boolean | undefined
+    ): SC.TextureInterpolation;
     _toTextureMipMapping(value: boolean | undefined): SC.TextureMipMapping;
     _toTextureParameterization(
       value: TextureParameterization | undefined
@@ -8509,7 +8625,9 @@ declare namespace Communicator.Internal {
     private _getMaterialPromiseWithDiffuseColor;
     createMatrix(elements: SC.Matrix16): Promise<SC.MatrixInc>;
     createIdentityMatrix(): Promise<SC.MatrixInc>;
-    createMeshInstance(meshInstanceData: MeshInstanceData): Promise<SC.InstanceInc>;
+    createMeshInstance(
+      meshInstanceData: MeshInstanceData
+    ): Promise<SC.InstanceInc>;
     destroyLocalInstances(instanceIncs: SC.InstanceIncs): Promise<void>;
     private _fromScCamera;
     getCameraPromise(): Promise<Camera>;
@@ -8746,7 +8864,10 @@ declare namespace Communicator.Internal {
     setHardEdgeThreshold(value: number): void;
     setHardEdgeThresholdRampWidth(value: number): void;
     setSimpleReflectionEnabled(value?: boolean): void;
-    setSimpleReflectionBlurInterval(value: number, unit: BlurIntervalUnit): void;
+    setSimpleReflectionBlurInterval(
+      value: number,
+      unit: BlurIntervalUnit
+    ): void;
     setSimpleReflectionBlurSamples(value: number): void;
     setSimpleReflectionFadeAngle(degrees: number): void;
     setSimpleReflectionOpacity(value: number): void;
@@ -9217,7 +9338,10 @@ declare namespace Communicator.Internal {
   function deepClone(obj: any): any;
   function getWithDefault<T>(maybeValue: T | undefined, defaultValue: T): T;
   type VersionNumber = number[];
-  function versionAtLeast(version: VersionNumber, atLeast: VersionNumber): boolean;
+  function versionAtLeast(
+    version: VersionNumber,
+    atLeast: VersionNumber
+  ): boolean;
   function versionString(version: VersionNumber): string;
 }
 declare namespace Communicator {
@@ -9409,7 +9533,9 @@ declare namespace Communicator {
       handle: Selection.IncrementalSelectionId
     ): DeprecatedPromise;
     /** @deprecated Use [[endIncrementalSelection]] instead. */
-    endVolumeSelection(handle: Selection.IncrementalSelectionId): DeprecatedPromise;
+    endVolumeSelection(
+      handle: Selection.IncrementalSelectionId
+    ): DeprecatedPromise;
     /**
      * Returns the next batch of instances selected by the supplied selection context.
      * @param handle The handle to an active area selection context.
@@ -9417,12 +9543,16 @@ declare namespace Communicator {
      */
     advanceIncrementalSelection(
       handle: Selection.IncrementalSelectionId,
-      predicate?: ((item: Selection.NodeSelectionItem) => Promise<boolean>) | null
+      predicate?:
+        | ((item: Selection.NodeSelectionItem) => Promise<boolean>)
+        | null
     ): Promise<boolean>;
     /** @deprecated Use [[advanceIncrementalSelection]] instead. */
     advanceVolumeSelection(
       handle: Selection.IncrementalSelectionId,
-      predicate?: ((item: Selection.NodeSelectionItem) => Promise<boolean>) | null
+      predicate?:
+        | ((item: Selection.NodeSelectionItem) => Promise<boolean>)
+        | null
     ): Promise<boolean>;
     isSelected(item: Selection.SelectionItem): boolean;
     contains(item: Selection.SelectionItem): boolean;
@@ -9459,7 +9589,10 @@ declare namespace Communicator {
      * @param nodeId nodeId of the node to select. Pass null to clear the selection.
      * @returns the selection type of this operation.
      */
-    selectNode(nodeId: NodeId | null, selectionMode?: SelectionMode): SelectionType;
+    selectNode(
+      nodeId: NodeId | null,
+      selectionMode?: SelectionMode
+    ): SelectionType;
     private _triggerNullSelection;
     private _isInAxisOverlay;
     private _getNodeCounts;
@@ -9472,7 +9605,10 @@ declare namespace Communicator {
      * @param itemOrItems A selectionItem or selectionItem array that will be added to the current seleciton set.
      */
     add(
-      itemOrItems: Selection.NodeSelectionItem | Selection.NodeSelectionItem[] | null
+      itemOrItems:
+        | Selection.NodeSelectionItem
+        | Selection.NodeSelectionItem[]
+        | null
     ): void;
     private _filterItem;
     private _addImpl;
@@ -9844,7 +9980,10 @@ declare namespace Communicator {
  * https://github.com/canvg/canvg
  * https://www.npmjs.com/package/canvg
  */
-declare var canvg: (canvas: HTMLCanvasElement | string, svgXmlStr: string) => void;
+declare var canvg: (
+  canvas: HTMLCanvasElement | string,
+  svgXmlStr: string
+) => void;
 declare namespace Communicator {
   /**
    * Specifies which layers to include in a snapshot. These may be bitwise
@@ -9858,7 +9997,7 @@ declare namespace Communicator {
     /** HTML-based markup, such as text boxes. */
     Html = 4,
     /** All available layers. */
-    All = 7
+    All = 7,
   }
   /**
    * This class contains configuration properties for creating viewer snapshots.
@@ -9957,7 +10096,7 @@ declare namespace Communicator.Markup.Shape {
   enum EndcapType {
     None = 0,
     Arrowhead = 1,
-    Circle = 2
+    Circle = 2,
   }
   class EndcapShape extends StrokedShape {
     private _startEndcapType;
@@ -10356,7 +10495,7 @@ declare namespace Communicator {
      *       which may cause undesirable behavior. This can be avoided by setting
      *       [[TextureModifier.Decal]] in [[TextureOptions]] when applying the texture.
      */
-    Png = 5
+    Png = 5,
   }
   /** Parameters that describe an image to be used as a texture map. */
   interface ImageOptions {
@@ -10383,7 +10522,7 @@ declare namespace Communicator {
      */
     Clamp = 0,
     /** Repeat the texture image when UV coordinates go outside the [0.0, 1.0] range. */
-    Repeat = 1
+    Repeat = 1,
   }
   /**
    * Indicates how texture coordinates are specified or generated. This controls where a given
@@ -10391,7 +10530,7 @@ declare namespace Communicator {
    */
   enum TextureParameterization {
     /** The texture will be mapped according to UV coordinates specified in the mesh data. */
-    UV = 0
+    UV = 0,
   }
   /** Flags that control how textures are applied. */
   enum TextureModifier {
@@ -10399,7 +10538,7 @@ declare namespace Communicator {
      * When set, any transparent areas of the texture will be the same color as the underlying
      * diffuse color of the object.
      */
-    Decal = 1
+    Decal = 1,
   }
   /** Parameters that describe a texture and control how it is applied. */
   interface TextureOptions {
@@ -10779,7 +10918,9 @@ declare namespace Communicator {
     ): DeprecatedPromise;
     private _endIncrementalSelection;
     /** @deprecated Use [[endIncrementalSelection]] instead. */
-    endVolumeSelection(handle: Selection.IncrementalSelectionId): DeprecatedPromise;
+    endVolumeSelection(
+      handle: Selection.IncrementalSelectionId
+    ): DeprecatedPromise;
     /**
      * Returns the next batch of geometry selected by the supplied selection context.
      * @param handle The handle to an active area selection context.
@@ -10908,7 +11049,10 @@ declare namespace Communicator {
      * @param bottom the bottom color for the the background gradient.
      * @returns a promise that resolves when the operation has completed.
      */
-    setBackgroundColor(top?: Color | null, bottom?: Color | null): DeprecatedPromise;
+    setBackgroundColor(
+      top?: Color | null,
+      bottom?: Color | null
+    ): DeprecatedPromise;
     /**
      * Hides all nodes except those specified. Also fits the camera to those nodes' bounding box.
      * @param nodeIds An array of the node IDs to be isolated.
@@ -10942,7 +11086,11 @@ declare namespace Communicator {
      * @param duration Time in milliseconds for the camera transition to the new camera view.
      * @returns A promise that will be resolved once the transition is complete.
      */
-    fitBounding(bounding: Box, duration?: number, camera?: Camera): Promise<void>;
+    fitBounding(
+      bounding: Box,
+      duration?: number,
+      camera?: Camera
+    ): Promise<void>;
     /**
      * Sets whether backfaces should be rendered in the scene.
      * @param visible Boolean value indicating whether backfaces should be rendered.
@@ -11769,7 +11917,10 @@ declare namespace Communicator {
      * @param value The interval to set.
      * @param unit The unit in which the `value` argument is specified.
      */
-    setSimpleReflectionBlurInterval(value: number, unit?: BlurIntervalUnit): void;
+    setSimpleReflectionBlurInterval(
+      value: number,
+      unit?: BlurIntervalUnit
+    ): void;
     /**
      * Returns the distance between samples taken by the blur filter used
      * for simple reflections.
@@ -12307,7 +12458,10 @@ declare namespace Communicator {
      * Selects a part with the given Id.
      * @param nodeId nodeId of the part to select. Pass null to clear the selection.
      */
-    selectPart(nodeId: PartId | null, selectionMode?: SelectionMode): SelectionType;
+    selectPart(
+      nodeId: PartId | null,
+      selectionMode?: SelectionMode
+    ): SelectionType;
     trigger(name: "bcfLoaded", id: number, filename: BCFName): void;
     trigger(name: "bcfRemoved", id: number): void;
     trigger(
@@ -12346,9 +12500,18 @@ declare namespace Communicator {
       planeIndex: number
     ): void;
     trigger(name: "cuttingSectionsLoaded"): void;
-    trigger(name: "redlineCreated", redlineMarkup: Markup.Redline.RedlineItem): void;
-    trigger(name: "redlineDeleted", redlineMarkup: Markup.Redline.RedlineItem): void;
-    trigger(name: "redlineUpdated", redlineMarkup: Markup.Redline.RedlineItem): void;
+    trigger(
+      name: "redlineCreated",
+      redlineMarkup: Markup.Redline.RedlineItem
+    ): void;
+    trigger(
+      name: "redlineDeleted",
+      redlineMarkup: Markup.Redline.RedlineItem
+    ): void;
+    trigger(
+      name: "redlineUpdated",
+      redlineMarkup: Markup.Redline.RedlineItem
+    ): void;
     trigger(name: "measurementBegin"): void;
     trigger(
       name: "measurementCreated",
@@ -12378,7 +12541,11 @@ declare namespace Communicator {
     trigger(name: "viewCreated", view: Markup.MarkupView): void;
     trigger(name: "viewDeleted", view: Markup.MarkupView): void;
     trigger(name: "viewLoaded", view: Markup.MarkupView): void;
-    trigger(name: "contextMenu", position: Point2, modifiers: KeyModifiers): void;
+    trigger(
+      name: "contextMenu",
+      position: Point2,
+      modifiers: KeyModifiers
+    ): void;
     trigger(name: "beginInteraction"): void;
     trigger(name: "endInteraction"): void;
     /**
@@ -12744,7 +12911,9 @@ declare namespace Communicator.Util {
      * Stops and clears the selection.
      * @returns A `Promise` that resolves when completed.
      */
-    clearSelection(this: IncrementalSelection<"SelectionManager">): Promise<void>;
+    clearSelection(
+      this: IncrementalSelection<"SelectionManager">
+    ): Promise<void>;
   }
   namespace IncrementalSelection {
     /**
@@ -12780,7 +12949,9 @@ declare namespace Communicator.Util {
      * @param config The config to test.
      * @returns `true` if `config` is a `ScreenByAreaConfig` and `false` otherwise.
      */
-    function isScreenByAreaConfig(config: BeginConfig): config is ScreenByAreaConfig;
+    function isScreenByAreaConfig(
+      config: BeginConfig
+    ): config is ScreenByAreaConfig;
     /**
      * Configuration object detailing how a ray drll selection begins.
      */
@@ -12886,12 +13057,12 @@ declare namespace Communicator.Internal {
 declare namespace Communicator.Internal {
   enum AdvanceSelectionCapacity {
     Batch = 1000,
-    Chunk = 100
+    Chunk = 100,
   }
   const enum ScSelectionBits {
     SelectionBitsFaceHasMeasurementData = 1,
     SelectionBitsFacePlanar = 2,
-    SelectionBitsEdgeHasMeasurementData = 4
+    SelectionBitsEdgeHasMeasurementData = 4,
   }
   class ScSelectionManager {
     private readonly _sc;
@@ -12989,8 +13160,12 @@ declare namespace Communicator {
   }
 }
 declare namespace Communicator.Internal.Tree.MeasurementProperty {
-  function isFace(prop: SubentityProperties.Base): prop is SubentityProperties.Face;
-  function isEdge(prop: SubentityProperties.Base): prop is SubentityProperties.Edge;
+  function isFace(
+    prop: SubentityProperties.Base
+  ): prop is SubentityProperties.Face;
+  function isEdge(
+    prop: SubentityProperties.Base
+  ): prop is SubentityProperties.Edge;
 }
 declare namespace Communicator.Internal.Tree.MeasurementProperty.Face {
   function parseBinary(parser: AssemblyDataParser): SubentityProperties.Face;
@@ -13000,10 +13175,14 @@ declare namespace Communicator.Internal.Tree.MeasurementProperty.Face {
     ): SubentityProperties.CylinderElement;
   }
   class Plane {
-    static parseBinary(parser: AssemblyDataParser): SubentityProperties.PlaneElement;
+    static parseBinary(
+      parser: AssemblyDataParser
+    ): SubentityProperties.PlaneElement;
   }
   class Cone {
-    static parseBinary(parser: AssemblyDataParser): SubentityProperties.ConeElement;
+    static parseBinary(
+      parser: AssemblyDataParser
+    ): SubentityProperties.ConeElement;
   }
   class Sphere {
     static parseBinary(
@@ -13011,7 +13190,9 @@ declare namespace Communicator.Internal.Tree.MeasurementProperty.Face {
     ): SubentityProperties.SphereElement;
   }
   class Torus {
-    static parseBinary(parser: AssemblyDataParser): SubentityProperties.TorusElement;
+    static parseBinary(
+      parser: AssemblyDataParser
+    ): SubentityProperties.TorusElement;
   }
   class Other {
     static parseBinary(
@@ -13049,7 +13230,9 @@ declare namespace Communicator.Internal.Tree.MeasurementProperty.Face {
     ): SubentityProperties.OffsetElement;
   }
   class Pipe {
-    static parseBinary(_parser: AssemblyDataParser): SubentityProperties.PipeElement;
+    static parseBinary(
+      _parser: AssemblyDataParser
+    ): SubentityProperties.PipeElement;
   }
   class Ruled {
     static parseBinary(
@@ -13080,7 +13263,9 @@ declare namespace Communicator.Internal.Tree.MeasurementProperty.Face {
 declare namespace Communicator.Internal.Tree.MeasurementProperty.Edge {
   function parseBinary(parser: AssemblyDataParser): SubentityProperties.Edge;
   class Line {
-    static parseBinary(parser: AssemblyDataParser): SubentityProperties.LineElement;
+    static parseBinary(
+      parser: AssemblyDataParser
+    ): SubentityProperties.LineElement;
   }
   class Circle {
     static parseBinary(
@@ -13134,7 +13319,7 @@ declare namespace Communicator.SubentityProperties {
     Undefined = 0,
     Line = 1,
     Circle = 2,
-    Other = 6
+    Other = 6,
   }
   /**
    * The face type of an `Face` property.
@@ -13158,7 +13343,7 @@ declare namespace Communicator.SubentityProperties {
     Revolution = 17,
     Extrusion = 18,
     FromCurves = 19,
-    Transform = 20
+    Transform = 20,
   }
   /**
    * Returned by [[Model.getEdgeProperty]] when the requested edge is a segment.
@@ -13232,7 +13417,12 @@ declare namespace Communicator.SubentityProperties {
    * Returned by [[Model.getFaceProperty]] when the requested face fits a cone.
    */
   class ConeElement {
-    constructor(radius: number, origin: Point3, normal: Point3, halfAngle: number);
+    constructor(
+      radius: number,
+      origin: Point3,
+      normal: Point3,
+      halfAngle: number
+    );
     copy(): ConeElement;
     type(): FaceType;
     protected readonly __ConeElement: Internal.PhantomMember;
@@ -13429,7 +13619,9 @@ declare namespace Communicator.Internal.Tree {
       markAllInstancesInvisible: boolean
     ): SC.InclusionKey;
     beginRequestBatch(type: RequestBatchType): void;
-    createMeshInstance(meshInstanceData: MeshInstanceData): Promise<SC.InstanceInc>;
+    createMeshInstance(
+      meshInstanceData: MeshInstanceData
+    ): Promise<SC.InstanceInc>;
     endRequestBatch(type: RequestBatchType): void;
     getModelBounding(
       ignoreInvisible: boolean,
@@ -13526,7 +13718,10 @@ declare namespace Communicator.Internal.Tree {
   }
   interface AbstractCuttingSection {
     activate(): Promise<void>;
-    addPlane(plane: Plane, referenceGeometry: Point3[] | null): Promise<boolean>;
+    addPlane(
+      plane: Plane,
+      referenceGeometry: Point3[] | null
+    ): Promise<boolean>;
     clear(): Promise<void>;
   }
 }
@@ -13668,7 +13863,10 @@ declare namespace Communicator.Internal.Tree {
      * @param node Node to be registered
      * @param authoredLayerId Authored id of the Layer
      */
-    registerNodeInLayer(node: AnyTreeNode, authoredLayerId: AuthoredLayerId): void;
+    registerNodeInLayer(
+      node: AnyTreeNode,
+      authoredLayerId: AuthoredLayerId
+    ): void;
     /**
      * Registers a tree node as part of a layer. This will create a layer if one doesn't exist.
      * @param node Node to be registered
@@ -13912,7 +14110,7 @@ declare namespace Communicator.Internal.Tree {
     NodeTypeDrawingView = 8,
     NodeTypeGroup = 4,
     NodeTypeProduct = 2,
-    IsAConfigurationNode = 1
+    IsAConfigurationNode = 1,
   }
 }
 declare namespace Communicator.Internal.Tree {
@@ -14051,7 +14249,12 @@ declare namespace Communicator.Internal.Tree {
     getNodeOrRepItem(
       node: AnyNode
     ): Promise<
-      ProductOccurrence | Pmi | CadView | PartDefinition | RepresentationItem | null
+      | ProductOccurrence
+      | Pmi
+      | CadView
+      | PartDefinition
+      | RepresentationItem
+      | null
     >;
     private _getNodeOrRepItemFromId;
     getEdgeCount(nodeId: RuntimeNodeId): Promise<number>;
@@ -14297,12 +14500,16 @@ declare namespace Communicator.Internal.Tree {
    * Retrieves the nearest `InclusionContext` to the input object by walking upward.
    * If the input object is already an `InclusionContext`, it is immediately returned instead.
    */
-  function towardInclusionContext(startNode: HasInclusionContext): InclusionContext;
+  function towardInclusionContext(
+    startNode: HasInclusionContext
+  ): InclusionContext;
   /**
    * Retrieves the nearest `LoadContext` to the input object by walking upward.
    * If the input object is already a `LoadContext`, it is immediately returned instead.
    */
-  function towardLoadContext(startNode: AnyTreeContext | AnyTreeNode): LoadContext;
+  function towardLoadContext(
+    startNode: AnyTreeContext | AnyTreeNode
+  ): LoadContext;
   /**
    * Retrieves the nearest `AttachContext` to the input object by walking upward.
    * If the input object is already an `AttachContext`, it is immediately returned instead.
@@ -14355,7 +14562,9 @@ declare namespace Communicator.Internal.Tree {
       masterModelKey: SC.MasterModelKey,
       parent: AttachContextParent
     );
-    getRootNodeMetaData(assemblyTree: AssemblyTree): Promise<AssemblyData | null>;
+    getRootNodeMetaData(
+      assemblyTree: AssemblyTree
+    ): Promise<AssemblyData | null>;
     getAttachScope(): SC.AttachScope;
     attachedInvisibly(): boolean;
     getMasterModelKey(): SC.MasterModelKey;
@@ -14572,7 +14781,7 @@ declare namespace Communicator.Internal.Tree {
     LayerList = 134217728,
     Filters = 268435456,
     UserData = 536870912,
-    UseNodeParseBits2 = 1073741824
+    UseNodeParseBits2 = 1073741824,
   }
   const enum NodeParseBits2 {
     FaceAttributes = 1,
@@ -14581,7 +14790,7 @@ declare namespace Communicator.Internal.Tree {
     GenericTypes = 8,
     GenericTypeId = 16,
     GenericId = 32,
-    DoublePrecisionMatrices = 64
+    DoublePrecisionMatrices = 64,
   }
   class NodeParseBits {
     hasBits1(bits: NodeParseBits1): boolean;
@@ -14607,22 +14816,22 @@ declare namespace Communicator.Internal.Tree {
     IsNotCrosssectionSet = 4096,
     IsNotExplosionSet = 8192,
     IsCombineState = 16384,
-    IsPerspective = 32768
+    IsPerspective = 32768,
   }
   const enum PmiParseBits {
     Name = 1,
     TopoRef = 2,
     Attributes = 4,
     InitiallyHidden = 8,
-    HasMultipleBodies = 16
+    HasMultipleBodies = 16,
   }
   const enum FilterParseBits {
     Name = 1,
     LayerItem = 2,
-    EntityItem = 4
+    EntityItem = 4,
   }
   const enum LayerParseBits {
-    Name = 1
+    Name = 1,
   }
   class AssemblyVisibility {
     constructor(shown: boolean, removed: boolean);
@@ -14714,7 +14923,10 @@ declare namespace Communicator.Internal.Tree {
     hasModelIncluded(modelKey: SC.ModelKey): boolean;
     attachedInvisibly(): boolean;
     prototypeInstanceCount(): number;
-    registerInclusion(inclusionKey: SC.InclusionKey, modelKey: SC.ModelKey): void;
+    registerInclusion(
+      inclusionKey: SC.InclusionKey,
+      modelKey: SC.ModelKey
+    ): void;
     registerMasterModelKey(masterModelKey: SC.MasterModelKey): void;
     registerPrototypeInstanceCount(prototypeInstanceCount: number): void;
     private readonly _inclusionsOf;
@@ -14738,7 +14950,10 @@ declare namespace Communicator.Internal.Tree {
     constructor();
     getPriorityCompareValue(priority: AttachPriority): number;
     setRequireBoundingInfo(required: boolean): void;
-    comparePriority(p1: OpaqueAttachPriority, p2: OpaqueAttachPriority): boolean;
+    comparePriority(
+      p1: OpaqueAttachPriority,
+      p2: OpaqueAttachPriority
+    ): boolean;
     private _updateHeuristicInfo;
     createPriority(
       viewInfo: ViewInfo,
@@ -14783,7 +14998,9 @@ declare namespace Communicator.Internal.Tree {
     readonly reservedNodeIdOffset: NodeIdOffset;
   }
   namespace ExternalModel {
-    function isNameInfo(info: ExternalModelInfo): info is ExternalModelInfoByName;
+    function isNameInfo(
+      info: ExternalModelInfo
+    ): info is ExternalModelInfoByName;
     function isIncInfo(info: ExternalModelInfo): info is ExternalModelInfoByInc;
     function canImplicitlyLoad(info: ExternalModelInfo): boolean;
   }
@@ -14938,7 +15155,10 @@ declare namespace Communicator.Internal.Tree {
 }
 declare namespace Communicator.Internal.Tree {
   class ScKeyRemapper {
-    remapModel(effectiveModelKey: SC.ModelKey, originalModelKey: SC.ModelKey): void;
+    remapModel(
+      effectiveModelKey: SC.ModelKey,
+      originalModelKey: SC.ModelKey
+    ): void;
     remapInclusion(
       effectiveModelKey: SC.ModelKey,
       effectiveInclusionKey: SC.InclusionKey,
@@ -15088,11 +15308,17 @@ declare namespace Communicator.Internal.Tree {
       attrName: string
     ): SC.InstanceKey | null;
     static parseNodeId(elem: Element, attrName: string): AuthoredNodeId | null;
-    static parseLayerId(elem: Element, attrName: string): AuthoredLayerId | null;
+    static parseLayerId(
+      elem: Element,
+      attrName: string
+    ): AuthoredLayerId | null;
     static parseUint(element: Element, attrName: string): number | null;
     static parseUints(elem: Element, attrName: string): number[] | null;
     static parseFloats(elem: Element, attrName: string): number[] | null;
-    static parseNodeIds(elem: Element, attrName: string): AuthoredNodeId[] | null;
+    static parseNodeIds(
+      elem: Element,
+      attrName: string
+    ): AuthoredNodeId[] | null;
     private static _parsePoint3;
     static parseBounding(parentElem: Element, childName: string): Box | null;
   }
@@ -15102,14 +15328,14 @@ declare namespace Communicator.Internal.Tree {
     ProductOccurrence = 0,
     AnyBody = 1,
     BodyInstance = 2,
-    CadView = 3
+    CadView = 3,
   }
   const enum NodeBits {
     InitiallyShown = 1073741824,
     InitiallyRemoved = 536870912,
     IsShownSpecified = 524288,
     IsShown = 262144,
-    IsLoaded = -2147483648
+    IsLoaded = -2147483648,
   }
   /**
    * All the information needed to describe a generic node to be added into an assembly tree.
@@ -15252,14 +15478,14 @@ declare namespace Communicator.Internal.Tree {
   const enum AnyBodyBits {
     OutOfHierarchy = 268435456,
     PreventFromResetting = 16384,
-    Requested = 1024
+    Requested = 1024,
   }
   const enum BodyTypeBits {
     None = 0,
     BodyInstance = 1,
     PmiBody = 2,
     ViewFrame = 4,
-    All = 7
+    All = 7,
   }
   interface AnyBodyInfo {
     readonly nodeInfo: NodeInfo;
@@ -15372,7 +15598,7 @@ declare namespace Communicator.Internal.Tree {
     IsExplosionSet = 4194304,
     IsCombineState = 2097152,
     IsPerspective = 1048576,
-    HasDynamicFrame = 8192
+    HasDynamicFrame = 8192,
   }
   interface CadViewInfo<Id> {
     readonly nodeId: AuthoredNodeId | DynamicNodeId;
@@ -15458,11 +15684,14 @@ declare namespace Communicator.Internal.Tree {
     readonly repItemInfos: RepresentationItemInfo[];
   }
   const enum PartDefinitionBits {
-    IsMissing = 4096
+    IsMissing = 4096,
   }
   type PartDefinitionReferrer = ProductOccurrence;
   class PartDefinition extends NodeMixin<PartDefinitionBits> {
-    static parseXml(assemblyTree: AssemblyTree, elem: Element): PartDefinitionInfo;
+    static parseXml(
+      assemblyTree: AssemblyTree,
+      elem: Element
+    ): PartDefinitionInfo;
     static parseBinary(
       assemblyTree: AssemblyTree,
       parser: AssemblyDataParser
@@ -15519,11 +15748,11 @@ declare namespace Communicator.Internal.Tree {
     Welding = 13,
     Table = 14,
     Other = 15,
-    GeometricalTolerance = 16
+    GeometricalTolerance = 16,
   }
   enum PmiSubTypeDatum {
     Ident = 1,
-    Target = 2
+    Target = 2,
   }
   enum PmiSubTypeDimension {
     Distance = 1,
@@ -15544,21 +15773,21 @@ declare namespace Communicator.Internal.Tree {
     Length = 16,
     LengthCurvilinear = 17,
     LengthCircular = 18,
-    Angle = 19
+    Angle = 19,
   }
   enum PmiSubTypeGdt {
-    Fcf = 1
+    Fcf = 1,
   }
   enum PmiSubTypeWelding {
     Line = 1,
-    Spot = 2
+    Spot = 2,
   }
   enum PmiSubTypeOther {
     SymbolUser = 1,
     SymbolUtility = 2,
     SymbolCustom = 3,
     GeometricReference = 4,
-    Region = 5
+    Region = 5,
   }
   class PmiTopologyReference {
     constructor(body: AnyBody);
@@ -15611,7 +15840,9 @@ declare namespace Communicator.Internal.Tree {
     getRuntimeId(): RuntimeNodeId;
     getBranchVisibility(): BranchVisibility;
     setVisibility(visible: boolean): void;
-    getPmiTopologyReferences(assemblyTree: AssemblyTree): PmiTopologyReference[];
+    getPmiTopologyReferences(
+      assemblyTree: AssemblyTree
+    ): PmiTopologyReference[];
     protected readonly __Pmi: PhantomMember;
     private readonly _parent;
     private readonly _packed;
@@ -15623,10 +15854,10 @@ declare namespace Communicator.Internal.Tree {
   const enum BranchVisibility {
     Hidden = 1,
     Shown = 2,
-    Mixed = 3
+    Mixed = 3,
   }
   const enum ProductBits_Legacy {
-    NodeTypeDrawingSheet = 6
+    NodeTypeDrawingSheet = 6,
   }
   const enum ProductBits {
     IsAConfigurationNode = 1,
@@ -15640,7 +15871,7 @@ declare namespace Communicator.Internal.Tree {
     BranchVisibilityDirty = 32768,
     IsMissing = 4096,
     OutOfHierarchy = 268435456,
-    IsExternalModelRoot = 2048
+    IsExternalModelRoot = 2048,
   }
   interface ProductOccurrenceInfo {
     readonly nodeInfo: NodeInfo;
@@ -15761,7 +15992,9 @@ declare namespace Communicator.Internal.Tree {
       callback: (node: BodyInstance) => void | Promise<void>
     ): Promise<void>;
     forEachPmi(callback: (node: Pmi) => void | Promise<void>): Promise<void>;
-    forEachCadView(callback: (node: CadView) => void | Promise<void>): Promise<void>;
+    forEachCadView(
+      callback: (node: CadView) => void | Promise<void>
+    ): Promise<void>;
     hasBodyInstances(): boolean;
     getBodyInstances(): BodyInstance[];
     getCadViews(): CadView[];
@@ -15814,7 +16047,7 @@ declare namespace Communicator.Internal.Tree {
     BRep = 1,
     Tessellation = 2,
     Wireframe = 3,
-    PointCloud = 4
+    PointCloud = 4,
   }
   interface RepresentationItemInfo {
     readonly nodeInfo: NodeInfo;
@@ -15859,8 +16092,14 @@ declare namespace Communicator.Internal.Tree {
     getEdgeAttributes(index: number): SubentityAttributes | null;
     getFaceMeasurementProperty(index: number): SubentityProperties.Face | null;
     getEdgeMeasurementProperty(index: number): SubentityProperties.Edge | null;
-    setFaceMeasurementProperty(index: number, prop: SubentityProperties.Face): void;
-    setEdgeMeasurementProperty(index: number, prop: SubentityProperties.Edge): void;
+    setFaceMeasurementProperty(
+      index: number,
+      prop: SubentityProperties.Face
+    ): void;
+    setEdgeMeasurementProperty(
+      index: number,
+      prop: SubentityProperties.Edge
+    ): void;
     getBodyType(): BodyType;
     getRuntimeId(): RuntimeNodeId;
     protected readonly __RepresentationItem: PhantomMember;
@@ -16155,7 +16394,7 @@ declare namespace Communicator.Internal.Tree {
 declare namespace Communicator.Internal.Tree {
   enum WalkRestriction {
     None = 0,
-    LoadedNodesOnly = 1
+    LoadedNodesOnly = 1,
   }
   interface WalkerGeneric {
     walk(
@@ -16171,7 +16410,9 @@ declare namespace Communicator.Internal.Tree {
     readonly followPartDefinition?: (partDef: PartDefinition) => boolean;
     readonly enterPartDefinition?: (partDef: PartDefinition) => void;
     readonly leavePartDefinition?: (partDef: PartDefinition) => void;
-    readonly followRepresentationItem?: (repItem: RepresentationItem) => boolean;
+    readonly followRepresentationItem?: (
+      repItem: RepresentationItem
+    ) => boolean;
     readonly enterRepresentationItem?: (repItem: RepresentationItem) => void;
     readonly leaveRepresentationItem?: (repItem: RepresentationItem) => void;
     readonly followAnyBody?: (body: AnyBody) => boolean;
@@ -16277,7 +16518,10 @@ declare namespace Communicator {
      * @param plane The plane to be used for cutting.
      * @param referenceGeometry An optional list of four points representing a quad to be used as reference geometry for the cutting plane. Pass null to use no reference geometry for this cutting plane.
      */
-    addPlane(plane: Plane, referenceGeometry?: Point3[] | null): Promise<boolean>;
+    addPlane(
+      plane: Plane,
+      referenceGeometry?: Point3[] | null
+    ): Promise<boolean>;
     /**
      * Sets a plane currently in the cutting section at a given index.
      * @param index The index of the cutting plane to replace.
@@ -16341,7 +16585,10 @@ declare namespace Communicator {
      */
     setPlaneOpacity(index: number, opacity: number): void;
     /** @deprecated use [[setPlaneOpacity]] instead. */
-    setPlaneTransparency(index: number, transparency: number): DeprecatedPromise;
+    setPlaneTransparency(
+      index: number,
+      transparency: number
+    ): DeprecatedPromise;
     /** @deprecated use [[setPlaneOpacity]] instead. */
     setItemTransparency(index: number, transparency: number): DeprecatedPromise;
     /**
@@ -16454,7 +16701,7 @@ declare namespace Communicator.Internal {
   const enum VolumeTestResult {
     Outside = 0,
     PartiallyInside = 1,
-    FullyInside = 2
+    FullyInside = 2,
   }
   class ConvexVolume {
     private constructor();
@@ -16589,7 +16836,11 @@ declare namespace Communicator.Internal {
      * once the lazy value is forced (or the value itself if a `T` is directly supplied).
      */
     static create<T extends object | null>(
-      value: T | Promise<T> | LazyObject<T | Promise<T>> | (() => T | Promise<T>)
+      value:
+        | T
+        | Promise<T>
+        | LazyObject<T | Promise<T>>
+        | (() => T | Promise<T>)
     ): LazyPromise<T>;
     private constructor();
     /**
@@ -16904,7 +17155,7 @@ declare namespace Communicator.Internal.TerseArray {
 declare namespace Communicator.Util {
   const enum TimerIdleType {
     BeforeAction = 0,
-    AfterAction = 1
+    AfterAction = 1,
   }
   /**
    * This class represents a single time-delayed action.
@@ -17112,7 +17363,10 @@ declare namespace Communicator.Internal {
   /**
    * This is a cache of keyed `LazyPromise`s.
    */
-  class PromiseCache<K extends object | number | string, V extends object | null> {
+  class PromiseCache<
+    K extends object | number | string,
+    V extends object | null
+  > {
     clear(): void;
     load(key: K, lazyValue: LazyPromise<V>): Promise<V>;
     private readonly _cache;
@@ -17257,7 +17511,7 @@ declare namespace Communicator.Internal {
   const enum PromiseState {
     Pending = 0,
     Resolved = 1,
-    Rejected = 2
+    Rejected = 2,
   }
   /**
    * This represents a `OpenPromise` that tracks whether or not it has been resolved or rejected.
@@ -18281,11 +18535,15 @@ declare namespace Communicator.Internal.SVG {
     measureText(str: string, text: Markup.Shape.TextMarkupBase): Point2;
     measureTextBox(textBox: Markup.Shape.TextBox): Point2;
     drawPolyline(line: Markup.Shape.Polyline): SVGPolylineElement;
-    drawPolylines(polylineCollection: Markup.Shape.PolylineCollection): Element[];
+    drawPolylines(
+      polylineCollection: Markup.Shape.PolylineCollection
+    ): Element[];
     drawPolygon(polygon: Markup.Shape.Polygon): Element;
     drawPolygons(polygonCollection: Markup.Shape.PolygonCollection): Element[];
     drawRectangle(rectangle: Markup.Shape.Rectangle): Element;
-    drawRectangles(rectangleCollection: Markup.Shape.RectangleCollection): Element[];
+    drawRectangles(
+      rectangleCollection: Markup.Shape.RectangleCollection
+    ): Element[];
     drawTextBox(textBox: Markup.Shape.TextBox): Element[];
     drawTextBoxes(textBoxes: Markup.Shape.TextBoxCollection): Element[][];
     private _addTextBoxElement;
@@ -18703,7 +18961,12 @@ declare namespace Communicator {
     equals(plane: Plane): boolean;
     static createFromPointAndNormal(point: Point3, normal: Point3): Plane;
     static createFromPoints(p1: Point3, p2: Point3, p3: Point3): Plane;
-    static createFromCoefficients(a: number, b: number, c: number, d: number): Plane;
+    static createFromCoefficients(
+      a: number,
+      b: number,
+      c: number,
+      d: number
+    ): Plane;
   }
 }
 declare namespace Communicator {
@@ -18745,7 +19008,11 @@ declare namespace Communicator {
     static identity(): Quaternion;
     static toMatrix(quaternion: Quaternion): Matrix;
     static createFromMatrix(matrix: Matrix): Quaternion;
-    static interpolate(begin: Quaternion, end: Quaternion, t: number): Quaternion;
+    static interpolate(
+      begin: Quaternion,
+      end: Quaternion,
+      t: number
+    ): Quaternion;
     private static readonly _epsilon;
     private static _arccos;
   }
@@ -18756,15 +19023,25 @@ declare namespace Communicator {
  */
 declare namespace Communicator.Operator {
   interface Operator {
-    readonly onMouseDown?: (event: Event.MouseInputEvent) => void | Promise<void>;
-    readonly onMouseMove?: (event: Event.MouseInputEvent) => void | Promise<void>;
+    readonly onMouseDown?: (
+      event: Event.MouseInputEvent
+    ) => void | Promise<void>;
+    readonly onMouseMove?: (
+      event: Event.MouseInputEvent
+    ) => void | Promise<void>;
     readonly onMouseUp?: (event: Event.MouseInputEvent) => void | Promise<void>;
     readonly onMousewheel?: (
       event: Event.MouseWheelInputEvent
     ) => void | Promise<void>;
-    readonly onTouchStart?: (event: Event.TouchInputEvent) => void | Promise<void>;
-    readonly onTouchMove?: (event: Event.TouchInputEvent) => void | Promise<void>;
-    readonly onTouchEnd?: (event: Event.TouchInputEvent) => void | Promise<void>;
+    readonly onTouchStart?: (
+      event: Event.TouchInputEvent
+    ) => void | Promise<void>;
+    readonly onTouchMove?: (
+      event: Event.TouchInputEvent
+    ) => void | Promise<void>;
+    readonly onTouchEnd?: (
+      event: Event.TouchInputEvent
+    ) => void | Promise<void>;
     readonly onKeyDown?: (event: Event.KeyInputEvent) => void | Promise<void>;
     readonly onKeyUp?: (event: Event.KeyInputEvent) => void | Promise<void>;
     readonly onDeactivate?: () => void | Promise<void>;
@@ -19284,7 +19561,10 @@ declare namespace Communicator.Operator {
     private _callbackFlag;
     private _noteTextManager;
     /** @hidden */
-    constructor(viewer: WebViewer, noteTextManager: Markup.Note.NoteTextManager);
+    constructor(
+      viewer: WebViewer,
+      noteTextManager: Markup.Note.NoteTextManager
+    );
     /** @hidden */
     onMouseDown(event: Event.MouseInputEvent): void;
     /** @hidden */
@@ -19343,7 +19623,10 @@ declare namespace Communicator.Operator {
     private _forceEffectiveSceneVisibilityMask;
     private _doubleClickFitWorld;
     /** @hidden */
-    constructor(viewer: WebViewer, noteTextManager: Markup.Note.NoteTextManager);
+    constructor(
+      viewer: WebViewer,
+      noteTextManager: Markup.Note.NoteTextManager
+    );
     /**
      * Gets the mask used for forcing effective scene visibility during selection.
      */
@@ -19432,7 +19715,9 @@ declare namespace Communicator.Operator {
      * Sets the floor distance config used by BIM mode.
      * See also: [[enableBimMode]].
      */
-    setBimFloorConfig(floorConfig: CameraWalkBaseOperator.Bim.FloorConfig): void;
+    setBimFloorConfig(
+      floorConfig: CameraWalkBaseOperator.Bim.FloorConfig
+    ): void;
     /**
      * Gets the wall distance config used by BIM mode.
      * See also: [[enableBimMode]].
@@ -19622,19 +19907,19 @@ declare namespace Communicator.Operator {
         avatarOffset = 1500,
         maxClimbHeight = 600,
         negligibleClimbHeight = 20,
-        maxFallDistance = 5000
+        maxFallDistance = 5000,
       }
       /**
        * The defaults used for [[CameraWalkBaseOperator.Bim.WallConfig]].
        */
       enum WallConfig {
-        avatarOffset = 150
+        avatarOffset = 150,
       }
       /**
        * The defaults used for [[CameraWalkBaseOperator.Bim.DoorConfig]].
        */
       enum DoorConfig {
-        transparencyRange = 4000
+        transparencyRange = 4000,
       }
     }
   }
@@ -20100,7 +20385,9 @@ declare namespace Communicator.Operator {
     /**
      * Sets BIM floor config on both mouse and keyboard walk
      */
-    setBimFloorConfig(floorConfig: CameraWalkBaseOperator.Bim.FloorConfig): void;
+    setBimFloorConfig(
+      floorConfig: CameraWalkBaseOperator.Bim.FloorConfig
+    ): void;
     /**
      * Sets BIM wall config on both mouse and keyboard walk
      */
@@ -20390,7 +20677,10 @@ declare namespace Communicator.Markup.Measure {
      * @param objData An object given by [[toJson]].
      * @returns The prepared object.
      */
-    static fromJson(objData: any, viewer: WebViewer): MeasureBodyBodyDistanceMarkup;
+    static fromJson(
+      objData: any,
+      viewer: WebViewer
+    ): MeasureBodyBodyDistanceMarkup;
     getClassName(): string;
   }
 }
@@ -20444,9 +20734,15 @@ declare namespace Communicator.Markup.Measure {
      * @param objData An object given by [[toJson]].
      * @returns The prepared object.
      */
-    static fromJson(objData: any, viewer: WebViewer): MeasureCircleEdgeLengthMarkup;
+    static fromJson(
+      objData: any,
+      viewer: WebViewer
+    ): MeasureCircleEdgeLengthMarkup;
     /** @deprecated Use [[fromJson]] instead. */
-    static construct(obj: any, viewer: WebViewer): MeasureCircleEdgeLengthMarkup;
+    static construct(
+      obj: any,
+      viewer: WebViewer
+    ): MeasureCircleEdgeLengthMarkup;
     getClassName(): string;
   }
 }
@@ -20501,7 +20797,10 @@ declare namespace Communicator.Markup.Measure {
      * @param objData An object given by [[toJson]].
      * @returns The prepared object.
      */
-    static fromJson(objData: any, viewer: WebViewer): MeasureFaceFaceAngleMarkup;
+    static fromJson(
+      objData: any,
+      viewer: WebViewer
+    ): MeasureFaceFaceAngleMarkup;
     /** @deprecated Use [[fromJson]] instead. */
     static construct(obj: any, viewer: WebViewer): MeasureFaceFaceAngleMarkup;
     getClassName(): string;
@@ -20574,9 +20873,15 @@ declare namespace Communicator.Markup.Measure {
      * @param objData An object given by [[toJson]].
      * @returns The prepared object.
      */
-    static fromJson(objData: any, viewer: WebViewer): MeasureFaceFaceDistanceMarkup;
+    static fromJson(
+      objData: any,
+      viewer: WebViewer
+    ): MeasureFaceFaceDistanceMarkup;
     /** @deprecated Use [[fromJson]] instead. */
-    static construct(obj: any, viewer: WebViewer): MeasureFaceFaceDistanceMarkup;
+    static construct(
+      obj: any,
+      viewer: WebViewer
+    ): MeasureFaceFaceDistanceMarkup;
     getClassName(): string;
   }
 }
@@ -20605,7 +20910,10 @@ declare namespace Communicator.Markup.Measure {
      * @param objData An object given by [[toJson]].
      * @returns The prepared object.
      */
-    static fromJson(objData: any, viewer: WebViewer): MeasureLineLineAngleMarkup;
+    static fromJson(
+      objData: any,
+      viewer: WebViewer
+    ): MeasureLineLineAngleMarkup;
     getClassName(): string;
   }
 }
@@ -20645,7 +20953,10 @@ declare namespace Communicator.Markup.Measure {
       viewer: WebViewer
     ): MeasurePointPointDistanceMarkup;
     /** @deprecated Use [[fromJson]] instead. */
-    static construct(obj: any, viewer: WebViewer): MeasurePointPointDistanceMarkup;
+    static construct(
+      obj: any,
+      viewer: WebViewer
+    ): MeasurePointPointDistanceMarkup;
     getClassName(): string;
   }
 }
@@ -20736,7 +21047,10 @@ declare namespace Communicator.Markup.Measure {
      * @param objData An object given by [[toJson]].
      * @returns The prepared object.
      */
-    static fromJson(objData: any, viewer: WebViewer): MeasurePolylineDistanceMarkup;
+    static fromJson(
+      objData: any,
+      viewer: WebViewer
+    ): MeasurePolylineDistanceMarkup;
     /** This measurement only allows clicking on the text box portion of the markup. */
     hit(point: Point2): boolean;
     getClassName(): string;
@@ -20786,7 +21100,10 @@ declare namespace Communicator.Markup.Measure {
       viewer: WebViewer
     ): MeasureStraightEdgeLengthMarkup;
     /** @deprecated Use [[fromJson]] instead. */
-    static construct(obj: any, viewer: WebViewer): MeasureStraightEdgeLengthMarkup;
+    static construct(
+      obj: any,
+      viewer: WebViewer
+    ): MeasureStraightEdgeLengthMarkup;
     getClassName(): string;
   }
 }
@@ -21404,7 +21721,7 @@ declare namespace Communicator.Operator {
     /** Text box indicating measurement value will be anchored to the last point of the polygon.*/
     Last = 1,
     /** Text box indicating measurement value will be anchored to the midpoint of the polygon.*/
-    Midpoint = 2
+    Midpoint = 2,
   }
   /**
    * This operator allows you to create a polygon and measure its area.
@@ -21471,7 +21788,7 @@ declare namespace Communicator.Operator {
     /** Text box indicating measurement value will be anchored to the last point of the polyline.*/
     Last = 1,
     /** Text box indicating measurement value will be anchored to the midpoint of the polyline.*/
-    Midpoint = 2
+    Midpoint = 2,
   }
   /**
    * This operator allows you to create a polyline and measure its distance.
@@ -21533,7 +21850,10 @@ declare namespace Communicator.Operator {
 }
 /** @hidden */
 declare namespace Communicator.Operator.Common {
-  function worldPointToScreenPoint(viewer: WebViewer, worldPosition: Point3): Point2;
+  function worldPointToScreenPoint(
+    viewer: WebViewer,
+    worldPosition: Point3
+  ): Point2;
   class SelectionPoints {
     readonly worldPosition: Point3 | null;
     readonly screenPosition: Point2;

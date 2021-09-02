@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import Communicator from 'communicator';
-import '../styles/caret.css';
+import Communicator from "communicator";
+import "../styles/caret.css";
 
 /// props
 /// hwv: The web viewer
@@ -9,7 +9,7 @@ class ModelTreeComponent extends Component {
     super(props);
     this.updateItemList = this.updateItemList.bind(this);
     this.rootNodeId = this.props.hwv.model.getAbsoluteRootNode();
-    this.itemList = {};  // A record of all the items in this tree
+    this.itemList = {}; // A record of all the items in this tree
   }
 
   componentDidMount() {
@@ -22,7 +22,7 @@ class ModelTreeComponent extends Component {
         for (const key in this.itemList) {
           this.itemList[key].setSelect(false);
         }
-        selectionEvents.forEach(selectionEvent => {
+        selectionEvents.forEach((selectionEvent) => {
           const nodeId = selectionEvent.getSelection().getNodeId();
           this.itemList[nodeId].setSelect(true);
         });
@@ -38,7 +38,12 @@ class ModelTreeComponent extends Component {
     return (
       <div className="list-group">
         <div className="d-none"></div>
-        <ModelTreeItemComponent hwv={this.props.hwv} nodeId={this.rootNodeId} level={0} updateItemList={this.updateItemList}></ModelTreeItemComponent>
+        <ModelTreeItemComponent
+          hwv={this.props.hwv}
+          nodeId={this.rootNodeId}
+          level={0}
+          updateItemList={this.updateItemList}
+        ></ModelTreeItemComponent>
       </div>
     );
   }
@@ -68,7 +73,9 @@ class ModelTreeItemComponent extends Component {
       case Communicator.NodeType.BodyInstance:
       case Communicator.NodeType.AssemblyNode: {
         this.nodeName = this.props.hwv.model.getNodeName(this.props.nodeId);
-        this.childrenId = this.props.hwv.model.getNodeChildren(this.props.nodeId);
+        this.childrenId = this.props.hwv.model.getNodeChildren(
+          this.props.nodeId
+        );
         this.props.updateItemList(this.props.nodeId, this);
         break;
       }
@@ -100,28 +107,49 @@ class ModelTreeItemComponent extends Component {
       paddingLeft: this.props.level * 20 + 10,
       marginBottom: -1,
     };
-    const childrenItems = this.childrenId.map(childId => {
-      return <ModelTreeItemComponent key={childId}
-        hwv={this.props.hwv}
-        nodeId={childId}
-        level={this.props.level + 1}
-        updateItemList={this.props.updateItemList}>
-      </ModelTreeItemComponent>;
+    const childrenItems = this.childrenId.map((childId) => {
+      return (
+        <ModelTreeItemComponent
+          key={childId}
+          hwv={this.props.hwv}
+          nodeId={childId}
+          level={this.props.level + 1}
+          updateItemList={this.props.updateItemList}
+        ></ModelTreeItemComponent>
+      );
     });
     // Styles
     const caretClass =
-      (this.childrenId.length > 0 ? 'caret ' : '') +
-      (this.state.isCollapsed ? '' : 'caret-down');
-    const selectionClass = 
-      this.state.isSelected ? 'bg-primary text-white ' : '';
-    const nameDisplayClass = this.nodeName === '' ? 'd-none ' : 'd-flex ';
+      (this.childrenId.length > 0 ? "caret " : "") +
+      (this.state.isCollapsed ? "" : "caret-down");
+    const selectionClass = this.state.isSelected
+      ? "bg-primary text-white "
+      : "";
+    const nameDisplayClass = this.nodeName === "" ? "d-none " : "d-flex ";
     return (
       <React.Fragment>
-        <div className={'list-group-item list-group-item-action py-1 ' + selectionClass + nameDisplayClass} style={paddingStyle}>
-          <div className={'py-1 ' + caretClass} onClick={this.collapseClick}></div>
-          <div className="py-1 flex-fill cursor-pointer user-select-none" onClick={this.selectClick}>{this.nodeName}</div>
+        <div
+          className={
+            "list-group-item list-group-item-action py-1 " +
+            selectionClass +
+            nameDisplayClass
+          }
+          style={paddingStyle}
+        >
+          <div
+            className={"py-1 " + caretClass}
+            onClick={this.collapseClick}
+          ></div>
+          <div
+            className="py-1 flex-fill cursor-pointer user-select-none"
+            onClick={this.selectClick}
+          >
+            {this.nodeName}
+          </div>
         </div>
-        <div className={this.state.isCollapsed ? 'd-none' : ''}>{childrenItems}</div>
+        <div className={this.state.isCollapsed ? "d-none" : ""}>
+          {childrenItems}
+        </div>
       </React.Fragment>
     );
   }

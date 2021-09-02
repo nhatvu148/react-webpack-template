@@ -11,7 +11,7 @@ declare namespace Communicator {
 declare namespace Communicator {
   enum ServiceClass {
     CSR_Session = 0,
-    SSR_Session = 1
+    SSR_Session = 1,
   }
   class ServiceRequest {
     private _serviceClass;
@@ -46,7 +46,7 @@ declare namespace Communicator {
     WS = 0,
     WSS = 1,
     HTTP = 2,
-    HTTPS = 3
+    HTTPS = 3,
   }
   interface ServiceProtocolStringMap {
     [protocol: string]: string;

@@ -1,56 +1,56 @@
 /** @hidden */
 declare module SC {
   export const enum AttachScope {
-    OfInitialEmptyModel = 0
+    OfInitialEmptyModel = 0,
   }
 
   export const enum Key {
-    Invalid = 0xffffffff
+    Invalid = 0xffffffff,
   }
 
   export const enum MasterModelKey {
     Invalid = Key.Invalid,
-    Local = 0
+    Local = 0,
   }
 
   export const enum CuttingSectionKey {
-    Invalid = Key.Invalid
+    Invalid = Key.Invalid,
   }
   export const enum DataKey {
-    Invalid = Key.Invalid
+    Invalid = Key.Invalid,
   }
   export const enum GroupKey {
-    Invalid = Key.Invalid
+    Invalid = Key.Invalid,
   }
   export const enum ImageKey {
-    Invalid = Key.Invalid
+    Invalid = Key.Invalid,
   }
   export const enum InclusionKey {
     Invalid = Key.Invalid,
-    Local = 0
+    Local = 0,
   }
   export const enum InstanceKey {
-    Invalid = Key.Invalid
+    Invalid = Key.Invalid,
   }
   export const enum LightKey {
-    Invalid = Key.Invalid
+    Invalid = Key.Invalid,
   }
   export const enum MaterialKey {
-    Invalid = Key.Invalid
+    Invalid = Key.Invalid,
   }
   export const enum MatrixKey {
-    Invalid = Key.Invalid
+    Invalid = Key.Invalid,
   }
   export const enum MeshKey {
-    Invalid = Key.Invalid
+    Invalid = Key.Invalid,
   }
   export const enum ModelKey {
     Invalid = Key.Invalid,
     Empty = 0xfffffffe,
-    Local = 0
+    Local = 0,
   }
   export const enum ViewKey {
-    Invalid = Key.Invalid
+    Invalid = Key.Invalid,
   }
 
   export type Id<Key> = [ModelKey, Key];
@@ -403,27 +403,27 @@ declare module SC {
   // Mirrors C++ `TC::Web::AntiAliasingMode`
   export const enum AntiAliasingMode {
     None,
-    SMAA
+    SMAA,
   }
 
   // Mirrors C++ `TC::Web::BimType`
   export const enum BimType {
     Floor = 0,
     Wall = 1,
-    Door = 2
+    Door = 2,
   }
 
   // Mirrors C++ `TC::Web::BlurIntervalUnit`
   export const enum BlurIntervalUnit {
     Pixels,
     ProportionOfWidth,
-    ProportionOfHeight
+    ProportionOfHeight,
   }
 
   // Mirrors C++ `TC::Web::CullingVectorSpace`
   export const enum CullingVectorSpace {
     Object,
-    World
+    World,
   }
 
   // Mirrors C++ `TC::Web::DrawMode`
@@ -431,14 +431,14 @@ declare module SC {
     Default,
     Highlight,
     HiddenLine,
-    XRay
+    XRay,
   }
 
   // Mirrors C++ `TC::Web::ElementType`
   export const enum ElementType {
     Faces,
     Lines,
-    Points
+    Points,
   }
 
   // Mirrors C++ `TC::Web::ElementMask::Bits`
@@ -447,7 +447,7 @@ declare module SC {
     Faces = 1 << ElementType.Faces,
     Lines = 1 << ElementType.Lines,
     Points = 1 << ElementType.Points,
-    All = Faces | Lines | Points
+    All = Faces | Lines | Points,
   }
 
   // Mirrors C++ `TC::Web::HighlightFilter`
@@ -455,13 +455,13 @@ declare module SC {
     None,
     Modulate,
     Desaturate,
-    Colorize
+    Colorize,
   }
 
   // Mirrors C++ `TC::Web::HighlightMode`
   export const enum HighlightMode {
     Visible,
-    VisibleWithFullOutline
+    VisibleWithFullOutline,
   }
 
   // Mirrors C++ `TC::Stream::Reader::ImageFormat`
@@ -471,18 +471,18 @@ declare module SC {
     Gray8,
     GrayAlpha16,
     Jpeg,
-    Png
+    Png,
   }
 
   // Mirrors C++ `TC::Web::LightSpace`
   export const enum LightSpace {
     World,
-    Camera
+    Camera,
   }
 
   // Mirrors C++ `TC::Web::LightType`
   export const enum LightType {
-    Directional
+    Directional,
   }
 
   // Mirrors C++ `TC::Web::LinePatternLengthUnit`
@@ -490,7 +490,7 @@ declare module SC {
     Object,
     World,
     ProportionOfScreenWidth,
-    ProportionOfScreenHeight
+    ProportionOfScreenHeight,
   }
 
   // Mirrors C++ `TC::Web::OverlayAnchor`
@@ -503,21 +503,21 @@ declare module SC {
     LeftCenter,
     RightCenter,
     BottomCenter,
-    Center
+    Center,
   }
 
   // Mirrors C++ `TC::Web::OverlayUnit`
   export const enum OverlayUnit {
     Pixels,
     ProportionOfScreen,
-    ProportionOfOtherDimension
+    ProportionOfOtherDimension,
   }
 
   // Mirrors C++ `TC::Web::PointShape`
   export const enum PointShape {
     Square,
     Disk,
-    Sphere
+    Sphere,
   }
 
   // Mirrors C++ `TC::Web::PointSizeUnit`
@@ -527,34 +527,34 @@ declare module SC {
     World,
     ProportionOfScreenWidth,
     ProportionOfScreenHeight,
-    ProportionOfBoundingDiagonal
+    ProportionOfBoundingDiagonal,
   }
 
   // Mirrors C++ `TC::Web::Camera::Projection`
   export const enum Projection {
     Perspective,
     Orthographic,
-    Stretched
+    Stretched,
   }
 
   // Mirrors C++ `::SessionType` (in web_client.cpp)
   export const enum SessionType {
     Uninitialized,
     Network,
-    Scs
+    Scs,
   }
 
   // Mirrors C++ `TC::Network::Command::SetVisibility`
   export const enum SetVisibility {
     Hide,
     Show,
-    Initial
+    Initial,
   }
 
   // Mirrors C++ `TC::Web::SimpleReflectionAttenuationUnit`
   export const enum SimpleReflectionAttenuationUnit {
     World,
-    ProportionOfBoundingHeight
+    ProportionOfBoundingHeight,
   }
 
   // Mirrors C++ `TC::Web::SmaaQuality`
@@ -562,55 +562,55 @@ declare module SC {
     Low,
     Medium,
     High,
-    Ultra
+    Ultra,
   }
 
   // Mirrors C++ `TC::Web::StateFailure`
   export const enum StateFailure {
     SessionNotStarted,
     Cancelled,
-    CorruptRpcMessage
+    CorruptRpcMessage,
   }
 
   // Mirrors C++ `TC::Web::TextureFlags::Interpolation`
   export const enum TextureInterpolation {
     On,
-    Off
+    Off,
   }
 
   // Mirrors C++ `TC::Web::TextureFlags::MipMapping`
   export const enum TextureMipMapping {
     On,
-    Off
+    Off,
   }
 
   // Mirrors C++ `TC::Web::TextureFlags::Modifiers`
   export const enum TextureModifier {
     None,
-    Decal
+    Decal,
   }
 
   // Mirrors C++ `TC::Web::TextureFlags::Parameterization`
   export const enum TextureParameterization {
-    UV
+    UV,
   }
 
   // Mirrors C++ `TC::Web::TextureFlags::Tiling`
   export const enum TextureTiling {
     Repeat,
-    Clamp
+    Clamp,
   }
 
   // Mirrors C++ `TC::Web::TransparencyMode`
   export const enum TransparencyMode {
     Unsorted,
-    SingleLayer
+    SingleLayer,
   }
 
   // Mirrors C++ `TC::Web::XRayGroup::Type`
   export const enum XRayGroup {
     Selected,
-    Unselected
+    Unselected,
   }
 
   export interface MeshInstanceInterface {
@@ -651,7 +651,10 @@ declare module SC {
     destroy(incs: InstanceIncs): Promise<void>;
     discardAnonymousMatrix(incs: InstanceIncs): Promise<void>;
     getAlwaysDraw(incs: InstanceIncs): Promise<boolean[]>;
-    getColor(incs: InstanceIncs, elementType: ElementType): Promise<(Rgb | null)[]>;
+    getColor(
+      incs: InstanceIncs,
+      elementType: ElementType
+    ): Promise<(Rgb | null)[]>;
     getCullingVector(incs: InstanceIncs): Promise<CullingVector[]>;
     getDoNotCut(incs: InstanceIncs): Promise<boolean[]>;
     getDoNotExplode(incs: InstanceIncs): Promise<boolean[]>;
@@ -661,7 +664,10 @@ declare module SC {
     getDoNotUseVertexColors(incs: InstanceIncs): Promise<boolean[]>;
     getDrawnWorldSpaceBounding(): Promise<Box>;
     getDrawnWorldSpaceBounding(incs: InstanceIncs): Promise<Box>;
-    getEffectiveColor(incs: InstanceIncs, elementType: ElementType): Promise<Rgb[]>;
+    getEffectiveColor(
+      incs: InstanceIncs,
+      elementType: ElementType
+    ): Promise<Rgb[]>;
     getEffectiveElementColor(
       incs: InstanceIncs,
       elementType: ElementType,
@@ -687,11 +693,17 @@ declare module SC {
       elementIndex: number
     ): Promise<boolean[]>;
     getExcludeBounding(incs: InstanceIncs): Promise<boolean[]>;
-    getFaceElementBounding(elementIndices: number[], inc: InstanceInc): Promise<Box>;
+    getFaceElementBounding(
+      elementIndices: number[],
+      inc: InstanceInc
+    ): Promise<Box>;
     getFacesVisible(incs: InstanceIncs): Promise<boolean[]>;
     getHighlighted(incs: InstanceIncs): Promise<boolean[]>;
     getLayerCount(): number;
-    getLineElementBounding(elementIndices: number[], inc: InstanceInc): Promise<Box>;
+    getLineElementBounding(
+      elementIndices: number[],
+      inc: InstanceInc
+    ): Promise<Box>;
     getLinesVisible(incs: InstanceIncs): Promise<boolean[]>;
     getMatrix(incs: InstanceIncs, layer: number): Promise<MatrixIncs>;
     getMeshData(incs: InstanceIncs): Promise<MeshIds>;
@@ -779,7 +791,11 @@ declare module SC {
       matrixInc: MatrixInc
     ): Promise<void>;
     setMeshLevel(incs: InstanceIncs, meshLevel: number): void;
-    setOpacity(incs: InstanceIncs, elementType: ElementType, opacity: number): void;
+    setOpacity(
+      incs: InstanceIncs,
+      elementType: ElementType,
+      opacity: number
+    ): void;
     setOverlayIndex(incs: InstanceIncs, index: OverlayIndex): void;
     setOverrideSceneVisibility(
       incs: InstanceIncs,
@@ -790,7 +806,10 @@ declare module SC {
     setScreenSpace(incs: InstanceIncs, value: boolean): void;
     setScreenSpaceStretched(incs: InstanceIncs, value: boolean): void;
     setStreamCutoffScale(value: number): void;
-    setSuppressCameraScale(incs: InstanceIncs, suppressCameraScale: boolean): void;
+    setSuppressCameraScale(
+      incs: InstanceIncs,
+      suppressCameraScale: boolean
+    ): void;
     setTexture(
       incs: InstanceIncs,
       elementType: ElementType,
@@ -802,7 +821,11 @@ declare module SC {
       parameterization: TextureParameterization,
       modifiers: TextureModifier
     ): Promise<void>;
-    setVisible(incs: InstanceIncs, visible: boolean, onlyDemanded: boolean): void;
+    setVisible(
+      incs: InstanceIncs,
+      visible: boolean,
+      onlyDemanded: boolean
+    ): void;
     setXRay(incs: InstanceIncs, value: boolean): void;
     synchronizeVisibilities(incs: InstanceIncs, visible: boolean): void;
     unsetColor(incs: InstanceIncs, elementType: ElementType): void;
@@ -900,7 +923,10 @@ declare module SC {
     create(meshDataBuilder: MeshDataBuilder): Promise<MeshId>;
     destroy(ids: MeshIds): Promise<void>;
     getData(id: MeshId): Promise<Communicator.MeshDataCopy>;
-    lineElementSegments(meshId: MeshId, lineElementIndex: number): Promise<Point3s>;
+    lineElementSegments(
+      meshId: MeshId,
+      lineElementIndex: number
+    ): Promise<Point3s>;
     linesToIncidentFaces(
       lineElementIndices: number[],
       meshId: MeshId
@@ -1396,7 +1422,9 @@ declare module SC {
       byModel: boolean,
       keyCountOnly: boolean
     ): Promise<(ModelKey | DataKey)[] | [number]>;
-    modelKeysFromInclusionKeys(inclusionKeys: InclusionKey[]): Promise<ModelKey[]>;
+    modelKeysFromInclusionKeys(
+      inclusionKeys: InclusionKey[]
+    ): Promise<ModelKey[]>;
     onResize(): void;
     pauseCapping(): void;
     primaryModelKey(): Promise<ModelKey>;
@@ -1409,7 +1437,10 @@ declare module SC {
       cuttingPlanes: Plane3[],
       key: CuttingSectionKey
     ): Promise<void>;
-    requestGroups(groupIds: GroupIds, obtainDependentGroups: boolean): Promise<void>;
+    requestGroups(
+      groupIds: GroupIds,
+      obtainDependentGroups: boolean
+    ): Promise<void>;
     requestImages(imageIds: ImageIds, wantThumbnails: boolean): Promise<void>;
     requestMaterials(materialIds: MaterialIds): Promise<void>;
     requestMeshInstances(
@@ -1453,7 +1484,11 @@ declare module SC {
     setBackFacesVisible(visible: boolean): void;
     setBackgroundColor(color: Rgba): void;
     setBackgroundGradient(top: Rgba, bottom: Rgba): void;
-    setBloomBlurInterval(layer: number, value: number, unit: BlurIntervalUnit): void;
+    setBloomBlurInterval(
+      layer: number,
+      value: number,
+      unit: BlurIntervalUnit
+    ): void;
     setBloomBlurSamples(layer: number, value: number): void;
     setBloomEnabled(value: boolean): void;
     setBloomIntensity(layer: number, value: number): void;
@@ -1531,7 +1566,10 @@ declare module SC {
       farDistance: number,
       unit: SimpleReflectionAttenuationUnit
     ): void;
-    setSimpleReflectionBlurInterval(value: number, unit: BlurIntervalUnit): void;
+    setSimpleReflectionBlurInterval(
+      value: number,
+      unit: BlurIntervalUnit
+    ): void;
     setSimpleReflectionBlurSamples(value: number): void;
     setSimpleReflectionEnabled(value: boolean): void;
     setSimpleReflectionFadeAngle(degrees: number): void;
@@ -1561,7 +1599,10 @@ declare module SC {
     setXRayOpacity(element: ElementType, value: number): void;
     setXRayTransparencyMode(value: TransparencyMode): void;
     shutDown(): void;
-    startComparison(instanceSet1: InstanceIncs, instanceSet2: InstanceIncs): void;
+    startComparison(
+      instanceSet1: InstanceIncs,
+      instanceSet2: InstanceIncs
+    ): void;
     startExplode(incs: InstanceIncs, center: Point3): void;
     suspendDrawing(): void;
     testPointVisibility(points: Vector3[]): Promise<number[]>;
