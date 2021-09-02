@@ -1,6 +1,7 @@
 import "./styles.css";
 import IMAGE from "./react.jpg";
 import { Counter } from "./Counter";
+import Hoop from "./Hoop";
 
 export const App = () => {
   return (
@@ -11,6 +12,7 @@ export const App = () => {
       </h1>
       <img src={IMAGE} alt="React Logo" width="300" height="200" />
       <Counter />
+      <Hoop />
     </>
   );
 };
